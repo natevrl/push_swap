@@ -6,7 +6,7 @@
 /*   By: nbenhado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 14:36:19 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/15 15:43:26 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/15 19:25:13 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char **init_stack_a(char **argv, int numb)
 	tab_de_str = malloc(sizeof(char **) * numb);
 	while (y < numb)
 	{
-		tab_de_str[i] = argv[y];
+		tab_de_str[i] = ft_strdup(argv[y]);
 		i++;
 		y++;
 	}
@@ -101,14 +101,14 @@ int empty_or_max(char **tab, int max)
 
 	i = 0;
 	if (!tab)
-		return (0);
-	while (max  > 0)
+		return (-1);
+	while (i <  max - 1)
 	{
-		max--;	
-		if (!tab[max])
-			return (max - 1);
+		if (tab[i] == '\0')
+			return (i);
+		i++;
 	}
-	return (1);
+	return (0);
 }
 
 void	swap_b(char **tab)
@@ -130,6 +130,8 @@ void	swap_a(char **tab)
 // prend le premier element de a (le plus haut) et le met dans b (le plus bas possible), ne fait rient sur a est vide
 void	push_b(char **a, char **b, int max)
 {
+	if (empty_or_max(a, max) < 0)
+		return ;
 	b[empty_or_max(b, max)] = a[empty_or_max(a, max)];
 	a[empty_or_max(a, max)] = "";
 }
@@ -144,9 +146,9 @@ int main(int ac, char **av)
 	b = init_stack_b(ac);
 	//printf("%s\n", tab1[1]);
 	print_stack(a, b, ac);
-	push_b(a, b, ac);
+	swap_a(a);
 	print_stack(a, b, ac);
-	printf("%d\n", empty_or_max(a, ac));
+	printf("%d\n", empty_or_max(b, ac));
 
 	return (0);
 }
