@@ -6,7 +6,7 @@
 /*   By: nbenhado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 14:36:19 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/15 19:25:13 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/15 21:50:34 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ char **init_stack_b(int numb)
 	tab_de_str = malloc(sizeof(char **) * numb);
 	while (i + 1 < numb)
 	{
-		tab_de_str[i] = "";
+		tab_de_str[i] = ft_strdup("\0");
 		i++;
 	}
-	tab_de_str[i] = 0;
+	tab_de_str[i] = ft_strdup("\0");
 	return (tab_de_str);
 }
 
@@ -91,23 +91,34 @@ char **init_stack_a(char **argv, int numb)
 		i++;
 		y++;
 	}
-	tab_de_str[i] = 0;
+	tab_de_str[i] = ft_strdup("\0");
 	return (tab_de_str);
 }
 //renvoi l'emplacement de la premiere case vide trouver (ou le premier si full)
-int empty_or_max(char **tab, int max)
+int first_empty_case(char **tab, int max)
 {
-	int i;
-
-	i = 0;
-	if (!tab)
-		return (-1);
-	while (i <  max - 1)
+	// je decremente de 2 : 1 pour lindex, 1 car argc compte le a.out
+	max -= 2;
+	while (max > 0)
 	{
-		if (tab[i] == '\0')
-			return (i);
-		i++;
+		if (ft_strlen(tab[max]) == 0)
+			return (max);
+		max--;
 	}
+	return (0);
+}
+
+int isempty(char **tab, int max)
+{
+	if (ft_strlen(tab[max - 2]) == 0)
+		return (1);
+	return (0);
+}
+
+int isfull(char **tab)
+{
+	if (ft_strlen(tab[0]) != 0)
+		return (1);
 	return (0);
 }
 
@@ -130,10 +141,18 @@ void	swap_a(char **tab)
 // prend le premier element de a (le plus haut) et le met dans b (le plus bas possible), ne fait rient sur a est vide
 void	push_b(char **a, char **b, int max)
 {
-	if (empty_or_max(a, max) < 0)
+	if (isempty(a, max))
 		return ;
-	b[empty_or_max(b, max)] = a[empty_or_max(a, max)];
-	a[empty_or_max(a, max)] = "";
+	if (isfull(a))
+	{
+		b[first_empty_case(b, max)] = a[0];
+		a[0] = ft_strdup("\0");
+	}
+	else
+	{
+		b[first_empty_case(b, max)] = a[first_empty_case(a, max) + 1];
+		a[first_empty_case(a, max) + 1] = ft_strdup("\0");
+	}
 }
 
 int main(int ac, char **av)
@@ -144,11 +163,11 @@ int main(int ac, char **av)
 	printf("valeur de AC : %d\n", ac);
 	a = init_stack_a(av, ac);
 	b = init_stack_b(ac);
-	//printf("%s\n", tab1[1]);
 	print_stack(a, b, ac);
-	swap_a(a);
+	push_b(a, b, ac);
+	push_b(a, b, ac);
+	push_b(a, b, ac);
+	push_b(a, b, ac);
 	print_stack(a, b, ac);
-	printf("%d\n", empty_or_max(b, ac));
-
 	return (0);
 }
