@@ -15,6 +15,11 @@
 
 void	main_algo(char **a, char **b, int down)
 {
+	if(!swap_checker())
+	{
+		ft_putstr_fd("Error\n");
+		return ;
+	}
 	while (1)
 	{
 		if (ft_atoi(a[before_empty_case(a, down)]) == minimal_value(a, down))
