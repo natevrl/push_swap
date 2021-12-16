@@ -13,7 +13,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "libft/libft.h"
-# define SIZE 5
 
 /*void	split_print_stack(char **a, char **b, int number, char **args)
 {
@@ -94,6 +93,7 @@ char **init_stack_a(char **argv, int numb)
 	tab_de_str[i] = ft_strdup("\0");
 	return (tab_de_str);
 }
+
 //renvoi l'emplacement de la premiere case vide trouver (ou le premier si full)
 int first_empty_case(char **tab, int max)
 {
@@ -130,12 +130,22 @@ void	swap_b(char **tab)
 	tab[1] = tmp;
 }
 
-void	swap_a(char **tab)
+void	swap_a(char **tab, int max)
 {
 	char *tmp;
-	tmp = tab[0];
-	tab[0] = tab[1];
-	tab[1] = tmp;
+	
+	if (isfull(tab))
+	{
+		tmp = tab[0];
+		tab[0] = tab[1];
+		tab[1] = tmp;
+	}
+	else
+	{
+		tmp = tab[first_empty_case(tab, max) + 1];
+		tab[first_empty_case(tab, max) + 1] = tab[first_empty_case(tab, max) + 2];
+		tab[first_empty_case(tab, max) + 2] = tmp;
+	}
 }
 
 // prend le premier element de a (le plus haut) et le met dans b (le plus bas possible), ne fait rient sur a est vide
@@ -155,6 +165,22 @@ void	push_b(char **a, char **b, int max)
 	}
 }
 
+void	push_a(char **a, char **b, int max)
+{
+	if (isempty(b, max))
+		return ;
+	if (isfull(b))
+	{
+		a[first_empty_case(a, max)] = b[0];
+		b[0] = ft_strdup("\0");
+	}
+	else
+	{
+		a[first_empty_case(a, max)] = b[first_empty_case(b, max) + 1];
+		b[first_empty_case(b, max) + 1] = ft_strdup("\0");
+	}
+}
+
 int main(int ac, char **av)
 {
 	char **a;
@@ -166,8 +192,8 @@ int main(int ac, char **av)
 	print_stack(a, b, ac);
 	push_b(a, b, ac);
 	push_b(a, b, ac);
-	push_b(a, b, ac);
-	push_b(a, b, ac);
+	print_stack(a, b, ac);
+	swap_a(b, ac);
 	print_stack(a, b, ac);
 	return (0);
 }
