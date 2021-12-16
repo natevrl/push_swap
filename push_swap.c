@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbenhado <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 14:36:19 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/16 16:21:25 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/16 17:08:52 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "libft/libft.h"
+#include "header.h"
 
 /*void	split_print_stack(char **a, char **b, int number, char **args)
 {
@@ -42,7 +40,6 @@
 	printf("a  b\n");
 	printf("--------\n");
 }*/
-
 
 void	print_stack(char **a, char **b, int number)
 {
@@ -135,168 +132,7 @@ int isfull(char **tab)
 	return (0);
 }
 
-void	swap_b(char **tab, int max)
-{
-	char *tmp;
-	
-	if (isempty(tab, max))
-		return ;
-	if (isfull(tab))
-	{
-		tmp = tab[0];
-		tab[0] = tab[1];
-		tab[1] = tmp;
-	}
-	else
-	{
-		tmp = tab[first_empty_case(tab, max) + 1];
-		tab[first_empty_case(tab, max) + 1] = tab[first_empty_case(tab, max) + 2];
-		tab[first_empty_case(tab, max) + 2] = tmp;
-	}
-}
 
-
-void	swap_a(char **tab, int max)
-{
-	char *tmp;
-	
-	if (isempty(tab, max))
-		return ;
-	if (isfull(tab))
-	{
-		tmp = tab[0];
-		tab[0] = tab[1];
-		tab[1] = tmp;
-	}
-	else
-	{
-		tmp = tab[first_empty_case(tab, max) + 1];
-		tab[first_empty_case(tab, max) + 1] = tab[first_empty_case(tab, max) + 2];
-		tab[first_empty_case(tab, max) + 2] = tmp;
-		}
-}
-
-void	swap_ss(char **a, char **b, int max)
-{
-	swap_a(a, max);
-	swap_b(b, max);
-}
-// prend le premier element de a (le plus haut) et le met dans b (le plus bas possible), ne fait rient sur a est vide
-void	push_b(char **a, char **b, int max)
-{
-	if (isempty(a, max))
-		return ;
-	if (isfull(a))
-	{
-		b[first_empty_case(b, max)] = a[0];
-		a[0] = ft_strdup("\0");
-	}
-	else
-	{
-		b[first_empty_case(b, max)] = a[first_empty_case(a, max) + 1];
-		a[first_empty_case(a, max) + 1] = ft_strdup("\0");
-	}
-}
-
-void	push_a(char **a, char **b, int max)
-{
-	if (isempty(b, max))
-		return ;
-	if (isfull(b))
-	{
-		a[first_empty_case(a, max)] = b[0];
-		b[0] = ft_strdup("\0");
-	}
-	else
-	{
-		a[first_empty_case(a, max)] = b[first_empty_case(b, max) + 1];
-		b[first_empty_case(b, max) + 1] = ft_strdup("\0");
-	}
-}
-
-void	rotate_a(char **tab, int max)
-{	
-	char *temp;
-	int top;
-	
-	if (isempty(tab, max))
-		return ;
-	top = before_empty_case(tab, max);
-	temp = tab[top];
-	max -= 2;
-	while (top < max)
-	{
-		tab[top] = tab[top + 1];
-		top++;
-	}
-	tab[max] = temp;
-}
-
-void	rotate_b(char **tab, int max)
-{	
-	char *temp;
-	int top;
-	
-	if (isempty(tab, max))
-		return ;
-	top = before_empty_case(tab, max);
-	temp = tab[top];
-	max -= 2;
-	while (top < max)
-	{
-		tab[top] = tab[top + 1];
-		top++;
-	}
-	tab[max] = temp;
-}
-
-void	rotate_rr(char **a, char **b, int max)
-{
-	rotate_a(a, max);
-	rotate_b(b, max);
-}
-
-void	reverse_rotate_a(char **tab, int max)
-{	
-	char *temp;
-	int top;
-	
-	if (isempty(tab, max))
-		return ;
-	top = before_empty_case(tab, max);
-	max -= 2;
-	temp = tab[max];
-	while (top < max)
-	{
-		tab[max] = tab[max - 1];
-		max--;
-	}
-	tab[top] = temp;
-}
-
-void	reverse_rotate_b(char **tab, int max)
-{	
-	char *temp;
-	int top;
-	
-	if (isempty(tab, max))
-		return ;
-	top = before_empty_case(tab, max);
-	max -= 2;
-	temp = tab[max];
-	while (top < max)
-	{
-		tab[max] = tab[max - 1];
-		max--;
-	}
-	tab[top] = temp;
-}
-
-void	reverse_rotate_rr(char **a, char **b, int max)
-{
-	reverse_rotate_a(a, max);
-	reverse_rotate_b(b, max);
-}
 
 int main(int ac, char **av)
 {
