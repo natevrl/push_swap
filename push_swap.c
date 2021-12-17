@@ -40,8 +40,9 @@ void	main_algo(char **a, char **b, int down)
 	char **b;
 	 
 	printf("valeur de AC : %d\n", ac);
-	a = init_stack_a(av, ac);
+	a = init_stack_a(av, &ac);
 	b = init_stack_b(ac);
+	printf("valeur de AC apres init : %d\n", ac);
 	printf("%d || %d\n\n", before_empty_case(a, ac), first_empty_case(a, ac));
 	printf("Minimal value : %d\n\n", minimal_value(a, ac));
 	print_stack(a, b, ac);

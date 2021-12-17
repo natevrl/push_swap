@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:55:28 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/17 16:40:13 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/17 17:00:01 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "libft/libft.h"
 
 // fonctions d'initialisation et d'affichage;
-char **init_stack_a(char **argv, int numb);
+char **init_stack_a(char **argv, int *ac);
 char **init_stack_b(int numb);
 void	split_print_stack(char **a, char **b, int number, char **args);
 void	print_stack(char **a, char **b, int number);

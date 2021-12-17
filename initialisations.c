@@ -74,14 +74,25 @@ char **init_stack_b(int numb)
 	return (tab_de_str);
 }
 
-char **init_stack_a(char **argv, int numb)
+char **init_stack_a(char **argv, int *ac)
 {
 	char **tab_de_str;
-	int i = 0;
-	int y = 1;
+	int i;
+	int y;
 
-	tab_de_str = malloc(sizeof(char **) * numb);
-	while (y < numb)
+	i = 0;
+	if (*ac == 2)
+	{
+		tab_de_str = ft_split(argv[1], ' ');
+		while (tab_de_str[i])
+			i++;
+		*ac = i + 1;
+		return tab_de_str;
+	}
+	tab_de_str = malloc(sizeof(char **) * *ac);
+	y = 1;
+	i = 0;
+	while (y < *ac)
 	{
 		tab_de_str[i] = ft_strdup(argv[y]);
 		i++;
