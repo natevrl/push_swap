@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 16:28:27 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/16 20:06:49 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/17 21:57:14 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	rotate_a(char **tab, int max)
 		top++;
 	}
 	tab[max] = temp;
+	ft_putstr_fd("ra\n", 1);
 }
 
 void	rotate_b(char **tab, int max)

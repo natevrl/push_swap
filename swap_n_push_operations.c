@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap&push_operations.c                             :+:      :+:    :+:   */
+/*   swap_n_push_operations.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:08:10 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/16 21:49:42 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/17 21:57:00 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	swap_b(char **tab, int max)
 		tab[first_empty_case(tab, max) + 1] = tab[first_empty_case(tab, max) + 2];
 		tab[first_empty_case(tab, max) + 2] = tmp;
 	}
+	ft_putstr_fd("sb\n", 1);
 }
 
 
@@ -51,6 +52,7 @@ void	swap_a(char **tab, int max)
 		tab[first_empty_case(tab, max) + 1] = tab[first_empty_case(tab, max) + 2];
 		tab[first_empty_case(tab, max) + 2] = tmp;
 		}
+	ft_putstr_fd("sa\n", 1);
 }
 
 void	swap_ss(char **a, char **b, int max)
@@ -74,6 +76,7 @@ void	push_b(char **a, char **b, int max)
 		b[first_empty_case(b, max)] = a[before_empty_case(a, max)];
 		a[first_empty_case(a, max) + 1] = ft_strdup("\0");
 	}
+	ft_putstr_fd("pb\n", 1);
 }
 
 void	push_a(char **a, char **b, int max)
@@ -90,4 +93,5 @@ void	push_a(char **a, char **b, int max)
 		a[first_empty_case(a, max)] = b[before_empty_case(b, max)];
 		b[first_empty_case(b, max) + 1] = ft_strdup("\0");
 	}
+	ft_putstr_fd("pa\n", 1);
 }
