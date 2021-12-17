@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:55:28 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/16 21:02:48 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/17 16:40:13 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char **init_stack_a(char **argv, int numb);
 char **init_stack_b(int numb);
 void	split_print_stack(char **a, char **b, int number, char **args);
 void	print_stack(char **a, char **b, int number);
+int	swap_checker(char **tab, int down);
 
 // fonctions de tcheck et de recuperation d'index;
 int isfull(char **tab);

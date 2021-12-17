@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:05:38 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/16 20:36:29 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/17 15:49:54by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,41 @@ char **init_stack_a(char **argv, int numb)
 	}
 	tab_de_str[i] = ft_strdup("\0");
 	return (tab_de_str);
+}
+
+// Permet de check : 
+// 1 = aucun nombre depasse le max/min INT 
+// 2 = Tout les nombre sont bien des digit (- pour les negatif inclus)
+// 3 = Qu'il m'y a aucun doublon
+int	swap_checker(char **tab, int down)
+{
+	int top;
+	int i;
+	
+	top = 0;
+	down -= 2;
+	while (top <= down)
+	{
+		if (ft_atoi(tab[top]) > 2147483647 || ft_atoi(tab[top]) < -2147483648)
+			return (0);		
+
+		i = 0;
+		if (tab[top][0] == '-')
+			i++;
+		while (tab[top][i])
+		{
+			if (tab[top][i] < '0' || tab[top][i] > '9')
+				return (0);
+			i++;
+		}
+		i = top + 1;
+		while (i <= down)
+		{
+			if (ft_atoi(tab[top]) == ft_atoi(tab[i]))
+				return (0);
+			i++;
+		}
+		top++;		
+	}
+	return (1);
 }

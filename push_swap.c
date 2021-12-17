@@ -15,9 +15,9 @@
 
 void	main_algo(char **a, char **b, int down)
 {
-	if(!swap_checker())
+	if(swap_checker(a, down) == 0)
 	{
-		ft_putstr_fd("Error\n");
+		ft_putstr_fd("Error\n", 2);
 		return ;
 	}
 	while (1)
