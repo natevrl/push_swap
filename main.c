@@ -54,6 +54,7 @@ void	main_algo(char **a, char **b, int down)
 	i = 0;
 	while (1)
 	{
+		
 		if (ft_atoi(a[before_empty_case(a, down)]) == minimal_value(a, down))
 		{
 			push_b(a, b, down);
@@ -61,7 +62,10 @@ void	main_algo(char **a, char **b, int down)
 			if (isempty(a, down))
 				break ;
 		}
-		rotate_a(a, down);
+		if (!near_down(a, minimal_value(a, down), down))
+		 	rotate_a(a, down);
+		 else
+			reverse_rotate_a(a, down);
 		i++;
 	}
 	while (!isempty(b, down))
@@ -81,11 +85,11 @@ void	main_algo(char **a, char **b, int down)
 	a = init_stack_a(av, &ac);
 	b = init_stack_b(ac);
 	//printf("valeur de AC apres init : %d\n", ac);
-	// printf("%d || %d\n\n", before_empty_case(a, ac), first_empty_case(a, ac));
+	//printf("%d || %d\n\n", before_empty_case(a, ac), first_empty_case(a, ac));
 	// printf("Minimal value : %d\n\n", minimal_value(a, ac));
-	// print_stack(a, b, ac);
-	main_algo(a, b, ac);
-	// print_stack(a, b, ac);
+	//print_stack(a, b, ac);
+	 main_algo(a, b, ac);
+	//print_stack(a, b, ac);
 
  	return (0);
  }

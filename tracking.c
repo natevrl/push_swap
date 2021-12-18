@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:06:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/16 21:32:30 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/18 18:51:12 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,20 @@ int minimal_value(char **tab, int down)
         top++;
     }   
     return (minimal);
+}
+
+// moitie de la stack = down - top / 2
+int near_down(char **tab, int minimal, int down)
+{
+	int mid_stack;
+	int top = before_empty_case(tab, down);
+	down -= 2;
+	mid_stack = (down - top) / 2;
+	while (mid_stack <= down)
+	{
+		if(ft_atoi(tab[mid_stack]) == minimal)
+			return (1);
+		mid_stack++;
+	}
+	return (0);	
 }
