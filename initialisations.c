@@ -128,7 +128,7 @@ int	swap_checker(char **tab, int down)
 			i++;
 		}
 		i = top + 1;
-		while (i <= down)
+		while (i <=  down)
 		{
 			if (ft_atoi(tab[top]) == ft_atoi(tab[i]))
 				return (0);

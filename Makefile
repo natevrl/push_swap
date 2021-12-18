@@ -4,6 +4,7 @@ SRCS		= rotate_operations.c\
 			main.c\
 			swap_n_push_operations.c\
 
+LIBS		= libft/libft.a
 
 OBJS		= ${SRCS:.c=.o}
 
@@ -17,6 +18,9 @@ RM			= rm -f
 CFLAGS 		= -Wall -Wextra -Werror
 
 all:		${NAME} 
+
+${LIBS}:
+		cd libft; make
 
 .c.o: 
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}

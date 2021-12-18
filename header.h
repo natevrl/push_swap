@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 17:35:13 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/18 18:09:06 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/18 22:43:22 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int isempty(char **tab, int max);
 int before_empty_case(char **tab, int max);
 int first_empty_case(char **tab, int max);
 int minimal_value(char **tab, int down);
+int maximal_value(char **tab, int down);
 int near_down(char **tab, int minimal_value, int down);
 
 // fonctions de swap;
@@ -50,6 +51,7 @@ void	reverse_rotate_b(char **tab, int max);
 void	reverse_rotate_rr(char **a, char **b, int max);
 
 //main
-void	main_algo(char **a, char **b, int down);
+void	big_stack_sorting(char **a, char **b, int down);
+void	three_numbers(char **a, int down);
 
 #endif
