@@ -43,11 +43,9 @@
 
 void	print_stack(char **a, char **b, int number)
 {
-	int i;
+	int	i;
 
 	i = 0;
-
-
 	while (i < number - 1)
 	{
 		printf("%s	|    %s\n", a[i], b[i]);
@@ -58,11 +56,11 @@ void	print_stack(char **a, char **b, int number)
 	printf("-----------------\n");
 }
 
-char **init_stack_b(int numb)
+char	**init_stack_b(int numb)
 {
 	char	**tab_de_str;
-	int 	i;
-	
+	int		i;
+
 	i = 0;
 	tab_de_str = malloc(sizeof(char **) * numb);
 	while (i + 1 < numb)
@@ -74,11 +72,11 @@ char **init_stack_b(int numb)
 	return (tab_de_str);
 }
 
-char **init_stack_a(char **argv, int *ac)
+char	**init_stack_a(char **argv, int *ac)
 {
-	char **tab_de_str;
-	int i;
-	int y;
+	char	**tab_de_str;
+	int		i;
+	int		y;
 
 	i = 0;
 	if (*ac == 2)
@@ -87,7 +85,7 @@ char **init_stack_a(char **argv, int *ac)
 		while (tab_de_str[i])
 			i++;
 		*ac = i + 1;
-		return tab_de_str;
+		return (tab_de_str);
 	}
 	tab_de_str = malloc(sizeof(char **) * *ac);
 	y = 1;
@@ -108,16 +106,15 @@ char **init_stack_a(char **argv, int *ac)
 // 3 = Qu'il m'y a aucun doublon
 int	swap_checker(char **tab, int down)
 {
-	int top;
-	int i;
-	
+	int	top;
+	int	i;
+
 	top = 0;
 	down -= 2;
 	while (top <= down)
 	{
 		if (ft_atoi(tab[top]) > 2147483647 || ft_atoi(tab[top]) < -2147483648)
-			return (0);		
-
+			return (0);
 		i = 0;
 		if (tab[top][0] == '-')
 			i++;
@@ -128,13 +125,13 @@ int	swap_checker(char **tab, int down)
 			i++;
 		}
 		i = top + 1;
-		while (i <=  down)
+		while (i <= down)
 		{
 			if (ft_atoi(tab[top]) == ft_atoi(tab[i]))
 				return (0);
 			i++;
 		}
-		top++;		
+		top++;
 	}
 	return (1);
 }

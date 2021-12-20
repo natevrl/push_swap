@@ -18,20 +18,26 @@
 #include "libft/libft.h"
 
 // fonctions d'initialisation et d'affichage;
-char **init_stack_a(char **argv, int *ac);
-char **init_stack_b(int numb);
+char	**init_stack_a(char **argv, int *ac);
+char	**init_stack_b(int numb);
 void	split_print_stack(char **a, char **b, int number, char **args);
 void	print_stack(char **a, char **b, int number);
 int	swap_checker(char **tab, int down);
 
-// fonctions de tcheck et de recuperation d'index;
-int isfull(char **tab);
-int isempty(char **tab, int max);
-int before_empty_case(char **tab, int max);
-int first_empty_case(char **tab, int max);
-int minimal_value(char **tab, int down);
-int maximal_value(char **tab, int down);
-int near_down(char **tab, int minimal_value, int down);
+// Tracking : fonctions de tcheck et de recuperation d'index;
+int	isfull(char **tab);
+int	isempty(char **tab, int max);
+int	before_empty_case(char **tab, int max);
+int	first_empty_case(char **tab, int max);
+int	minimal_value(char **tab, int down);
+int	maximal_value(char **tab, int down);
+int	near_down(char **tab, int minimal_value, int down);
+int	near_down_classic(char **tab, int minimal, int down);
+int	there_is_midtier(int *itab, char **ctab, int down, int top);
+int	is_in_midtier(int *itab, int down, int number);
+int	*sort_tab(char **tab, int down);
+
+
 
 // fonctions de swap;
 void	swap_a(char **tab, int max);

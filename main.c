@@ -81,6 +81,40 @@ void	three_numbers(char **a, int down)
 
 // }
 
+/*void	main_algo(char **a, char **b, int down)
+{
+	int i;
+	
+	if(swap_checker(a, down) == 0)
+	{
+		ft_putstr_fd("Error\n", 2);
+		return ;
+	}
+	i = 0;
+	while (1)
+	{
+		
+		if (ft_atoi(a[before_empty_case(a, down)]) == minimal_value(a, down))
+		{
+			push_b(a, b, down);
+			i++;
+			if (isempty(a, down))
+				break ;
+		}
+		if (!near_down(a, minimal_value(a, down), down))
+		 	rotate_a(a, down);
+		 else
+			reverse_rotate_a(a, down);
+		i++;
+	}
+	while (!isempty(b, down))
+	{
+		push_a(a, b, down);
+		i++;
+	}
+	//printf("\nnombre doperations : %d\n\n", i);
+}*/
+
 void	main_algo(char **a, char **b, int down)
 {
 	int i;
@@ -91,6 +125,12 @@ void	main_algo(char **a, char **b, int down)
 		return ;
 	}
 	i = 0;
+	while (!there_is_midtier(sort_tab(a, down), a, down, before_empty_case(a, down)))
+	{
+		if (is_in_midtier(sort_tab(a, down), down, ft_atoi(a[before_empty_case(a, down)])))
+			push_b(a, b, down);
+		rotate_a(a, down);
+	}
 	while (1)
 	{
 		
@@ -146,10 +186,12 @@ void	big_stack_sorting(char **a, char **b, int down)
 	//printf("\nvaleur de AC : %d\n", ac);
 	a = init_stack_a(av, &ac);
 	b = init_stack_b(ac);
+
+	printf("%d\n", is_in_midtier(sort_tab(a, ac), ac, 5));
 	// printf("valeur de AC apres init : %d\n", ac);
 	// printf("Minimal value : %d\n", minimal_value(a, ac));
 	// printf("Maximal value : %d\n\n", maximal_value(a, ac));
-	// print_stack(a, b, ac);
+	 print_stack(a, b, ac);
 	if (ac < 5)
 		three_numbers(a, ac);
 	// else if (ac == 5 || ac == 6)
@@ -157,7 +199,7 @@ void	big_stack_sorting(char **a, char **b, int down)
 	else
 	{
 		// big_stack_sorting(a, b, ac);
-		main_algo(a, b, ac);
+		//main_algo(a, b, ac);
 	}
 
  	return (0);

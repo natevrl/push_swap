@@ -14,8 +14,8 @@
 
 void	rotate_a(char **tab, int max)
 {
-	char *temp;
-	int top;
+	char	*temp;
+	int	top;
 
 	if (isempty(tab, max))
 		return ;
@@ -33,8 +33,8 @@ void	rotate_a(char **tab, int max)
 
 void	rotate_b(char **tab, int max)
 {
-	char *temp;
-	int top;
+	char	*temp;
+	int	top;
 
 	if (isempty(tab, max))
 		return ;
@@ -56,13 +56,12 @@ void	rotate_rr(char **a, char **b, int max)
 	rotate_a(a, max);
 	rotate_b(b, max);
 	ft_putstr_fd("rr\n", 1);
-	
 }
 
 void	reverse_rotate_a(char **tab, int max)
 {
-	char *temp;
-	int top;
+	char	*temp;
+	int	top;
 
 	if (isempty(tab, max))
 		return ;
@@ -80,8 +79,8 @@ void	reverse_rotate_a(char **tab, int max)
 
 void	reverse_rotate_b(char **tab, int max)
 {
-	char *temp;
-	int top;
+	char	*temp;
+	int	top;
 
 	if (isempty(tab, max))
 		return ;

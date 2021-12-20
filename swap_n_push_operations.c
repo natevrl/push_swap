@@ -14,8 +14,8 @@
 
 void	swap_b(char **tab, int max)
 {
-	char *tmp;
-	
+	char	*tmp;
+
 	if (isempty(tab, max))
 		return ;
 	if (isfull(tab))
@@ -36,8 +36,8 @@ void	swap_b(char **tab, int max)
 
 void	swap_a(char **tab, int max)
 {
-	char *tmp;
-	
+	char	*tmp;
+
 	if (isempty(tab, max))
 		return ;
 	if (isfull(tab))
@@ -51,7 +51,7 @@ void	swap_a(char **tab, int max)
 		tmp = tab[first_empty_case(tab, max) + 1];
 		tab[first_empty_case(tab, max) + 1] = tab[first_empty_case(tab, max) + 2];
 		tab[first_empty_case(tab, max) + 2] = tmp;
-		}
+	}
 	ft_putstr_fd("sa\n", 1);
 }
 
