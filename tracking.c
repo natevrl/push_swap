@@ -6,7 +6,7 @@
 /*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:06:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/21 02:33:44 by v3r              ###   ########.fr       */
+/*   Updated: 2021/12/21 15:37:23 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,21 +111,47 @@ int near_top_tabs(char **ctab, int *itab, int down)
 	int mid_stack;
 	int top = before_empty_case(ctab, down);
 	int i;
+	int compteur = 1;
 	down -= 2;
 	mid_stack = ( (down - top) / 2);
-	while (down - mid_stack >= top)
+	while (top <= down - mid_stack)
 	{
 		i = 0;
 		while (i < down / 2 )
 		{
-			if(ft_atoi(ctab[down - mid_stack]) == itab[i])
-				return (1);
+			if(ft_atoi(ctab[top]) == itab[i])
+				return (compteur);
 			i++;
 		}
-		mid_stack++;
+		top++;
+		compteur++;
 	}
-	return (0);	
+	return (-1);	
 }
+
+int near_down_tabs(char **ctab, int *itab, int down)
+{
+	int mid_stack;
+	int top = before_empty_case(ctab, down);
+	int i;
+	int compteur = 1;
+	down -= 2;
+	mid_stack = ( (down - top) / 2);
+	while (down >= top + mid_stack)
+	{
+		i = 0;
+		while (i < down / 2 )
+		{
+			if(ft_atoi(ctab[down]) == itab[i])
+				return (compteur);
+			i++;
+		}
+		down--;
+		compteur++;
+	}
+	return (-1);	
+}
+
 
 // static int comp (const void * elem1, const void * elem2) 
 // {

@@ -6,7 +6,7 @@
 /*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 17:35:13 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/21 02:30:55 by v3r              ###   ########.fr       */
+/*   Updated: 2021/12/21 14:53:59 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	minimal_value(char **tab, int down);
 int	maximal_value(char **tab, int down);
 int near_down(char **tab, int minimal, int down);
 int near_top_tabs(char **ctab, int *itab, int down);
+int near_down_tabs(char **ctab, int *itab, int down);
 
 int	there_is_midtier(int *itab, char **ctab, int down, int top);
 int	is_in_midtier(int *itab, int down, int number);
