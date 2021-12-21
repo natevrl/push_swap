@@ -6,7 +6,7 @@
 /*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:06:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/21 01:21:51 by v3r              ###   ########.fr       */
+/*   Updated: 2021/12/21 02:33:44 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,26 @@ int near_down(char **tab, int maximal, int down)
 	return (0);	
 }
 
+int near_top_tabs(char **ctab, int *itab, int down)
+{
+	int mid_stack;
+	int top = before_empty_case(ctab, down);
+	int i;
+	down -= 2;
+	mid_stack = ( (down - top) / 2);
+	while (down - mid_stack >= top)
+	{
+		i = 0;
+		while (i < down / 2 )
+		{
+			if(ft_atoi(ctab[down - mid_stack]) == itab[i])
+				return (1);
+			i++;
+		}
+		mid_stack++;
+	}
+	return (0);	
+}
 
 // static int comp (const void * elem1, const void * elem2) 
 // {

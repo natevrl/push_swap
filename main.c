@@ -158,9 +158,11 @@ void	main_algo(char **a, char **b, int down)
 			push_b(a, b, down);
 			compteur++;
 		}
-		else
+		// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
+		else if (near_top_tabs(a, sort, down))
 			rotate_a(a, down);
-
+		else
+			reverse_rotate_a(a, down);
 	}
 	while (!isempty(b, down))
 	{
@@ -211,7 +213,7 @@ void	main_algo(char **a, char **b, int down)
 	char **a;
 	char **b;
 	//int ac;
-	//  int *sort;
+	// int *sort;
 	// int i;
 
 	//ac = 11;
@@ -221,17 +223,17 @@ void	main_algo(char **a, char **b, int down)
 	a = init_stack_a(av, &ac);
 	b = init_stack_b(ac);
 
-	//  sort = sort_tab(a, ac);
+	// sort = sort_tab(a, ac);
 	// for (i = 0; i < 5; i++)
 	// 	printf(" tab[%d] = %d\n", i, sort[i]);
-	//  print_stack(a, b, ac);
+	//print_stack(a, b, ac);
 	// printf("mitier = %d\n", is_in_midtier(sort, ac, 1));
 	// printf("there is midtier : %d\n", there_is_midtier(sort, a, ac, before_empty_case(a, ac)));
 	// push_b(a, b, ac);
 	// push_b(a, b, ac);
 	// push_b(a, b, ac);
 	// push_b(a, b, ac);
-	// // printf("mini = %d\n", near_down(b, minimal_value(b, ac), ac, before_empty_case(b, ac)));
+	//	printf("tabs_down = %d\n", near_down_tabs(a, sort, ac));
 
 	// printf("mitier = %d\n", is_in_midtier(sort, ac, ft_atoi(a[before_empty_case(a, ac)])));
 	// printf("there is midtier : %d\n", there_is_midtier(sort, a, ac, before_empty_case(a, ac)));
