@@ -81,79 +81,40 @@ void	three_numbers(char **a, int down)
 
 // }
 
-/*void	main_algo(char **a, char **b, int down)
-{
-	int i;
+// void	main_algo(char **a, char **b, int down)
+// {
+// 	int i;
 	
-	if(swap_checker(a, down) == 0)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return ;
-	}
-	i = 0;
-	while (1)
-	{
+// 	if(swap_checker(a, down) == 0)
+// 	{
+// 		ft_putstr_fd("Error\n", 2);
+// 		return ;
+// 	}
+// 	i = 0;
+// 	while (1)
+// 	{
 		
-		if (ft_atoi(a[before_empty_case(a, down)]) == minimal_value(a, down))
-		{
-			push_b(a, b, down);
-			i++;
-			if (isempty(a, down))
-				break ;
-		}
-		if (!near_down(a, minimal_value(a, down), down))
-		 	rotate_a(a, down);
-		 else
-			reverse_rotate_a(a, down);
-		i++;
-	}
-	while (!isempty(b, down))
-	{
-		push_a(a, b, down);
-		i++;
-	}
-	//printf("\nnombre doperations : %d\n\n", i);
-}*/
+// 		if (ft_atoi(a[before_empty_case(a, down)]) == maximal_value(a, down))
+// 		{
+// 			push_b(a, b, down);
+// 			i++;
+// 			if (isempty(a, down))
+// 				break ;
+// 		}
+// 		if (!near_down(a, maximal_value(a, down), down))
+// 		 	rotate_a(a, down);
+// 		 else
+// 			reverse_rotate_a(a, down);
+// 		i++;
+// 	}
+// 	while (!isempty(b, down))
+// 	{
+// 		push_a(a, b, down);
+// 		i++;
+// 	}
+// 	//printf("\nnombre doperations : %d\n\n", i);
+// }
 
-void	main_algo(char **a, char **b, int down)
-{
-	int i;
-	
-	if(swap_checker(a, down) == 0)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return ;
-	}
-	i = 0;
-	while (!there_is_midtier(sort_tab(a, down), a, down, before_empty_case(a, down)))
-	{
-		if (is_in_midtier(sort_tab(a, down), down, ft_atoi(a[before_empty_case(a, down)])))
-			push_b(a, b, down);
-		rotate_a(a, down);
-	}
-	while (1)
-	{
-		
-		if (ft_atoi(a[before_empty_case(a, down)]) == minimal_value(a, down))
-		{
-			push_b(a, b, down);
-			i++;
-			if (isempty(a, down))
-				break ;
-		}
-		if (!near_down(a, minimal_value(a, down), down))
-		 	rotate_a(a, down);
-		 else
-			reverse_rotate_a(a, down);
-		i++;
-	}
-	while (!isempty(b, down))
-	{
-		push_a(a, b, down);
-		i++;
-	}
-	//printf("\nnombre doperations : %d\n\n", i);
-}
 
 void	big_stack_sorting(char **a, char **b, int down)
 {
@@ -177,21 +138,114 @@ void	big_stack_sorting(char **a, char **b, int down)
 	//printf("\nnombre doperations : %d\n\n", i);
 }
 
+void	main_algo(char **a, char **b, int down)
+{
+	int *sort;
+	int compteur;
+
+	sort = sort_tab(a, down);
+	
+	if(swap_checker(a, down) == 0)
+	{
+		ft_putstr_fd("Error\n", 2);
+		return ;
+	}
+	compteur = 0;
+	while (there_is_midtier(sort, a, down, before_empty_case(a, down)) == 1)
+	{
+		if (is_in_midtier(sort, down, ft_atoi(a[before_empty_case(a, down)])) == 1)
+		{
+			push_b(a, b, down);
+			compteur++;
+		}
+		else
+			rotate_a(a, down);
+
+	}
+	while (!isempty(b, down))
+	{
+		if (ft_atoi(b[before_empty_case(b, down)]) == maximal_value(b, down))
+		{
+			push_a(a, b, down);
+		}
+		if (near_down(b, maximal_value(b, down), down))
+			reverse_rotate_b(b, down);
+		 else
+		 	rotate_b(b, down);
+	}
+	while(compteur > 0)
+	{
+		rotate_a(a, down);
+		compteur--;
+	}
+	compteur = 0;
+	while (1)
+	{		
+		if (ft_atoi(a[before_empty_case(a,down)]) == minimal_value(a, down))
+			break ;
+		push_b(a, b, down);
+		compteur++;
+	}
+	while (!isempty(b, down))
+	{
+		
+		if (ft_atoi(b[before_empty_case(b, down)]) == maximal_value(b, down))
+		{
+			push_a(a, b, down);
+		}
+		if (near_down(b, maximal_value(b, down), down))
+		 	reverse_rotate_b(b, down);
+		else
+			rotate_b(b, down);
+	}
+	while(compteur > 0)
+	{
+		rotate_a(a, down);
+		compteur--;
+	}
+}
+
 
  int main(int ac, char **av)
  {
 	char **a;
 	char **b;
-	 
+	//int ac;
+	//  int *sort;
+	// int i;
+
+	//ac = 11;
+	//char *tab[11] = {"a.out", "1", "3", "2", "5", "4", "7", "9", "8", "19", "12"};
+
 	//printf("\nvaleur de AC : %d\n", ac);
 	a = init_stack_a(av, &ac);
 	b = init_stack_b(ac);
 
-	printf("%d\n", is_in_midtier(sort_tab(a, ac), ac, 5));
+	//  sort = sort_tab(a, ac);
+	// for (i = 0; i < 5; i++)
+	// 	printf(" tab[%d] = %d\n", i, sort[i]);
+	//  print_stack(a, b, ac);
+	// printf("mitier = %d\n", is_in_midtier(sort, ac, 1));
+	// printf("there is midtier : %d\n", there_is_midtier(sort, a, ac, before_empty_case(a, ac)));
+	// push_b(a, b, ac);
+	// push_b(a, b, ac);
+	// push_b(a, b, ac);
+	// push_b(a, b, ac);
+	// // printf("mini = %d\n", near_down(b, minimal_value(b, ac), ac, before_empty_case(b, ac)));
+
+	// printf("mitier = %d\n", is_in_midtier(sort, ac, ft_atoi(a[before_empty_case(a, ac)])));
+	// printf("there is midtier : %d\n", there_is_midtier(sort, a, ac, before_empty_case(a, ac)));
+	// print_stack(a, b, ac);
+
+	// push_b(a, b, ac);
+	// printf("mitier = %d\n", is_in_midtier(sort, ac, ft_atoi(a[before_empty_case(a, ac)])));
+	// printf("there is midtier : %d\n", there_is_midtier(sort, a, ac, before_empty_case(a, ac)));
+	//  printf("bef = %lld\n", ft_atoi(a[before_empty_case(a, ac)]));
+	//  push_b(a, b, ac);
+	//  printf("bef = %lld\n", ft_atoi(a[before_empty_case(a, ac)]));
 	// printf("valeur de AC apres init : %d\n", ac);
 	// printf("Minimal value : %d\n", minimal_value(a, ac));
 	// printf("Maximal value : %d\n\n", maximal_value(a, ac));
-	 print_stack(a, b, ac);
 	if (ac < 5)
 		three_numbers(a, ac);
 	// else if (ac == 5 || ac == 6)
@@ -199,8 +253,10 @@ void	big_stack_sorting(char **a, char **b, int down)
 	else
 	{
 		// big_stack_sorting(a, b, ac);
-		//main_algo(a, b, ac);
+		  main_algo(a, b, ac);
 	}
+	//printf("near_down = %d\n", near_down(b, 2, ac));
 
+	//print_stack(a, b, ac);
  	return (0);
  }

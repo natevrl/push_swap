@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tracking.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:06:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/18 21:49:17 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/21 01:21:51 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,50 +86,42 @@ int	maximal_value(char **tab, int down)
 }
 
 
-// moitie de la stack = down - top / 2
-int	near_down(char **tab, int minimal, int down)
+//un tier de la stack  = own - top) / 3) * 2
+// mid_stack + top = le haut de la stack + lajout des 2/3 = donc le bas de la stack
+int near_down(char **tab, int maximal, int down)
 {
-	int	mid_stack;
-	int	top;
-
-	top = before_empty_case(tab, down);
+	int mid_stack;
+	int top = before_empty_case(tab, down);
 	down -= 2;
-	mid_stack = (down - top) / 2;
-	while (mid_stack <= down)
+	mid_stack = ((down - top) / 2);
+	// printf("midstack = %d\n", mid_stack);
+	// printf("down = %d\n", down - top);
+	// printf("top = %d\n", top);
+	while (mid_stack + top <= down)
 	{
-		if(ft_atoi(tab[mid_stack]) == minimal)
+		if(ft_atoi(tab[mid_stack + top]) == maximal)
 			return (1);
 		mid_stack++;
 	}
 	return (0);	
 }
 
-// moitie de la stack = down - top / 2
-int	near_down_classic(char **tab, int minimal, int down)
-{
-	int	mid_stack;
-	int	vtop = before_empty_case(tab, down);
-	down -= 2;
-	mid_stack = (down - vtop) / 2;
-	while (mid_stack <= down)
-	{
-		if(ft_atoi(tab[mid_stack]) == minimal)
-			return (1);
-		mid_stack++;
-	}
-	return (0);
-}
 
-static int	intComparator ( const void * first, const void * second ) {
-	int	firstInt = * (const int *) first;
-	int	secondInt = * (const int *) second;
-	return firstInt - secondInt;
-}
+// static int comp (const void * elem1, const void * elem2) 
+// {
+//     int f = *((int*)elem1);
+//     int s = *((int*)elem2);
+//     if (f > s) return  1;
+//     if (f < s) return -1;
+//     return 0;
+// }
 
 int	*sort_tab(char **tab, int down)
 {
 	int	taille_actuel;
 	int	i;
+	int y;
+	int t;
 	int	*tmp;
 
 	taille_actuel = (down - 2);
@@ -140,7 +132,22 @@ int	*sort_tab(char **tab, int down)
 		tmp[i] = ft_atoi(tab[i]);
 		i++;
 	}
-	qsort(tmp, taille_actuel, sizeof(int), intComparator);
+	i = 0;
+	while (i <= taille_actuel)
+	{
+		y = i + 1;
+		while (y <= taille_actuel)
+		{
+			if (tmp[i] > tmp[y])
+			{
+				t = tmp[i];
+				tmp[i] = tmp[y];
+				tmp[y] = t;
+			}
+			y++;
+		}
+		i++;
+	}		
 	return (tmp);
 }
 
@@ -149,7 +156,7 @@ int	is_in_midtier(int *itab, int down, int number)
 	int	i;
 
 	i = 0;
-	while (i < (down - 2) / 2)
+	while (i < ( (down - 2) / 2 ) )
 	{
 		if(itab[i] == number)
 			return (1);
@@ -160,20 +167,19 @@ int	is_in_midtier(int *itab, int down, int number)
 
 int	there_is_midtier(int *itab, char **ctab, int down, int top)
 {
-	int	i;
+
 	int	y;
 
-	i = 0;
 	while (top <= down - 2)
 	{
 		y = 0;
 		while (y < (down - 2) / 2)
 		{
-			if(ft_atoi(ctab[i]) == itab[y])
+			if(ft_atoi(ctab[top]) == itab[y])
 				return (1);
 			y++;
 		}
-		i++;
+		top++;
 	}
 	return (0);
 }
