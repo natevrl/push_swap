@@ -249,12 +249,11 @@ void	main_algo(char **a, char **b, int down)
 
 	while (!isempty(b, down))
 	{
-		if (ft_atoi(b[before_empty_case(b, down)]) == minimal_value(b, down))
+		if (ft_atoi(b[before_empty_case(b, down)]) == maximal_value(b, down))
 		{
 			push_a(a, b, down);
-			rotate_a(a, down);
 		}
-		else if (near_down(b, minimal_value(b, down), down))
+		else if (near_down(b, maximal_value(b, down), down))
 			reverse_rotate_b(b, down);
 		else
 		 	rotate_b(b, down);

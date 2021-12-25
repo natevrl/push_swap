@@ -6,7 +6,7 @@
 /*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:06:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/25 12:25:27 by v3r              ###   ########.fr       */
+/*   Updated: 2021/12/25 12:34:55 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ int	*sort_tab(char **tab, int down)
 		y = i + 1;
 		while (y <= taille_actuel)
 		{
-			if (tmp[i] > tmp[y])
+			if (tmp[i] < tmp[y])
 			{
 				t = tmp[i];
 				tmp[i] = tmp[y];
