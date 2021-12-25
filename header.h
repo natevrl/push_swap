@@ -37,6 +37,8 @@ int near_down_tabs(char **ctab, int *itab, int down);
 
 int	there_is_midtier(int *itab, char **ctab, int down, int top);
 int	is_in_midtier(int *itab, int down, int number);
+int	is_in_quarter(int *itab, int down, int number, int quarter);
+int	there_is_quarter(int *itab, char **ctab, int down, int top, int quarter);
 int	*sort_tab(char **tab, int down);
 
 

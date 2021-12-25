@@ -6,7 +6,7 @@
 /*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:06:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/21 15:37:23 by v3r              ###   ########.fr       */
+/*   Updated: 2021/12/25 12:25:27 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,6 +224,38 @@ int	there_is_midtier(int *itab, char **ctab, int down, int top)
 			if(ft_atoi(ctab[top]) == itab[y])
 				return (1);
 			y++;
+		}
+		top++;
+	}
+	return (0);
+}
+
+int	is_in_quarter(int *itab, int down, int number, int quarter)
+{
+	int	i;
+
+	i = 0;
+	while (i <= ( (down - 2) / 4 ) )
+	{
+		if(itab[quarter + i] == number)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	there_is_quarter(int *itab, char **ctab, int down, int top, int quarter)
+{
+	int i;
+	down -= 2;
+	while (top <= down)
+	{
+		i = 0;
+		while (i <= down / 4)
+		{
+			if(ft_atoi(ctab[top]) == itab[quarter + i])
+				return (1);
+			i++;
 		}
 		top++;
 	}

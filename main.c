@@ -141,6 +141,7 @@ void	big_stack_sorting(char **a, char **b, int down)
 void	main_algo(char **a, char **b, int down)
 {
 	int *sort;
+	int quarter;
 	//int compteur;
 
 	sort = sort_tab(a, down);
@@ -151,9 +152,10 @@ void	main_algo(char **a, char **b, int down)
 		return ;
 	}
 	//compteur = 0;
-	while (there_is_midtier(sort, a, down, before_empty_case(a, down)) == 1)
+	quarter = 0;
+	while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
 	{
-		if (is_in_midtier(sort, down, ft_atoi(a[before_empty_case(a, down)])) == 1)
+		if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
 		{
 			push_b(a, b, down);
 			//compteur++;
@@ -175,36 +177,88 @@ void	main_algo(char **a, char **b, int down)
 		else
 		 	rotate_b(b, down);
 	}
-	while(ft_atoi(a[before_empty_case(a, down)]) != minimal_value(a, down))
+
+	quarter += down / 4;
+	while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
 	{
-		push_b(a, b, down);
+		if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+		{
+			push_b(a, b, down);
+			//compteur++;
+		}
+		// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
+		else
+			rotate_a(a, down);
 	}
-	// compteur = 0;
-	// while (1)
-	// {		
-	// 	if (ft_atoi(a[before_empty_case(a,down)]) == minimal_value(a, down))
-	// 		break ;
-	// 	push_b(a, b, down);
-	// 	compteur++;
-	// }
+
 	while (!isempty(b, down))
 	{
-		
 		if (ft_atoi(b[before_empty_case(b, down)]) == minimal_value(b, down))
 		{
 			push_a(a, b, down);
 			rotate_a(a, down);
 		}
 		else if (near_down(b, minimal_value(b, down), down))
-		 	reverse_rotate_b(b, down);
+			reverse_rotate_b(b, down);
 		else
-			rotate_b(b, down);
+		 	rotate_b(b, down);
 	}
-	// while(compteur > 0)
-	// {
-	// 	rotate_a(a, down);
-	// 	compteur--;
-	// }
+
+
+
+	quarter += down / 4;
+	while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
+	{
+		if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+		{
+			push_b(a, b, down);
+			//compteur++;
+		}
+		// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
+		else
+			rotate_a(a, down);
+	}
+
+	while (!isempty(b, down))
+	{
+		if (ft_atoi(b[before_empty_case(b, down)]) == minimal_value(b, down))
+		{
+			push_a(a, b, down);
+			rotate_a(a, down);
+		}
+		else if (near_down(b, minimal_value(b, down), down))
+			reverse_rotate_b(b, down);
+		else
+		 	rotate_b(b, down);
+	}
+
+
+
+	quarter += down / 4;
+	while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
+	{
+		if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+		{
+			push_b(a, b, down);
+			//compteur++;
+		}
+		// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
+		else
+			rotate_a(a, down);
+	}
+
+	while (!isempty(b, down))
+	{
+		if (ft_atoi(b[before_empty_case(b, down)]) == minimal_value(b, down))
+		{
+			push_a(a, b, down);
+			rotate_a(a, down);
+		}
+		else if (near_down(b, minimal_value(b, down), down))
+			reverse_rotate_b(b, down);
+		else
+		 	rotate_b(b, down);
+	}
 }
 
 
