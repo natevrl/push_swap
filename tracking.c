@@ -6,7 +6,7 @@
 /*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:06:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/25 20:46:26 by v3r              ###   ########.fr       */
+/*   Updated: 2021/12/25 21:58:31 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int near_down(char **tab, int maximal, int down)
 	return (0);	
 }
 
-int near_top_tabs(char **ctab, int *itab, int down)
+int near_top_tabs(char **ctab, int *itab, int down, int quarter)
 {
 	int mid_stack;
 	int top = before_empty_case(ctab, down);
@@ -117,19 +117,19 @@ int near_top_tabs(char **ctab, int *itab, int down)
 	while (top <= down - mid_stack)
 	{
 		i = 0;
-		while (i < down / 2 )
+		while (i < down / 4 )
 		{
-			if(ft_atoi(ctab[top]) == itab[i])
+			if(ft_atoi(ctab[top]) == itab[quarter + i + 1])
 				return (compteur);
 			i++;
 		}
 		top++;
 		compteur++;
 	}
-	return (-1);	
+	return (0);	
 }
 
-int near_down_tabs(char **ctab, int *itab, int down)
+int near_down_tabs(char **ctab, int *itab, int down, int quarter)
 {
 	int mid_stack;
 	int top = before_empty_case(ctab, down);
@@ -140,16 +140,16 @@ int near_down_tabs(char **ctab, int *itab, int down)
 	while (down >= top + mid_stack)
 	{
 		i = 0;
-		while (i < down / 2 )
+		while (i < down / 4 )
 		{
-			if(ft_atoi(ctab[down]) == itab[i])
+			if(ft_atoi(ctab[down]) == itab[quarter + i + 1])
 				return (compteur);
 			i++;
 		}
 		down--;
 		compteur++;
 	}
-	return (-1);	
+	return (0);	
 }
 
 

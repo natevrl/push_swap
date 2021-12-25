@@ -154,28 +154,43 @@ void	main_algo(char **a, char **b, int down)
 	//compteur = 0;
 // trie et push par quart
 	quarter = 0;
-	while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
+	if (near_top_tabs(a, sort, down, quarter) - near_down_tabs(a, sort, down, quarter) <= 0)
 	{
-		if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+		while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
 		{
-			push_b(a, b, down);
-			//compteur++;
+			if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+			{
+				push_b(a, b, down);
+				//compteur++;
+			}
+			// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
+			else
+				rotate_a(a, down);
 		}
-		// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
-		else if (near_top_tabs(a, sort, down) - near_down_tabs(a, sort, down) <= 0)
-			rotate_a(a, down);
-		else
-			reverse_rotate_a(a, down);
 	}
+	else
+	{
+		while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
+		{
+			if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+			{
+				push_b(a, b, down);
+				//compteur++;
+			}
+			// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
+			else
+				reverse_rotate_a(a, down);
+		}
+	}
+
 
 	while (!isempty(b, down))
 	{
-		if (ft_atoi(b[before_empty_case(b, down)]) == minimal_value(b, down))
+		if (ft_atoi(b[before_empty_case(b, down)]) == maximal_value(b, down))
 		{
 			push_a(a, b, down);
-			rotate_a(a, down);
 		}
-		else if (near_down(b, minimal_value(b, down), down))
+		else if (near_down(b, maximal_value(b, down), down))
 			reverse_rotate_b(b, down);
 		else
 		 	rotate_b(b, down);
@@ -183,28 +198,42 @@ void	main_algo(char **a, char **b, int down)
 
 // trie et push par quart
 	quarter += down / 4;
-	while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
+	if (near_top_tabs(a, sort, down, quarter) - near_down_tabs(a, sort, down, quarter) <= 0)
 	{
-		if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+		while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
 		{
-			push_b(a, b, down);
-			//compteur++;
+			if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+			{
+				push_b(a, b, down);
+				//compteur++;
+			}
+			// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
+			else
+				rotate_a(a, down);
 		}
-		// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
-		else if (near_top_tabs(a, sort, down) - near_down_tabs(a, sort, down) <= 0)
-			rotate_a(a, down);
-		else
-			reverse_rotate_a(a, down);
+	}
+	else
+	{
+		while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
+		{
+			if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+			{
+				push_b(a, b, down);
+				//compteur++;
+			}
+			// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
+			else
+				reverse_rotate_a(a, down);
+		}
 	}
 
 	while (!isempty(b, down))
 	{
-		if (ft_atoi(b[before_empty_case(b, down)]) == minimal_value(b, down))
+		if (ft_atoi(b[before_empty_case(b, down)]) == maximal_value(b, down))
 		{
 			push_a(a, b, down);
-			rotate_a(a, down);
 		}
-		else if (near_down(b, minimal_value(b, down), down))
+		else if (near_down(b, maximal_value(b, down), down))
 			reverse_rotate_b(b, down);
 		else
 		 	rotate_b(b, down);
@@ -214,28 +243,42 @@ void	main_algo(char **a, char **b, int down)
 
 // trie et push par quart
 	quarter += down / 4;
-	while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
+	if (near_top_tabs(a, sort, down, quarter) - near_down_tabs(a, sort, down, quarter) <= 0)
 	{
-		if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+		while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
 		{
-			push_b(a, b, down);
-			//compteur++;
+			if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+			{
+				push_b(a, b, down);
+				//compteur++;
+			}
+			// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
+			else
+				rotate_a(a, down);
 		}
-		// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
-		else if (near_top_tabs(a, sort, down) - near_down_tabs(a, sort, down) <= 0)
-			rotate_a(a, down);
-		else
-			reverse_rotate_a(a, down);
+	}
+	else
+	{
+		while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
+		{
+			if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+			{
+				push_b(a, b, down);
+				//compteur++;
+			}
+			// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
+			else
+				reverse_rotate_a(a, down);
+		}
 	}
 
 	while (!isempty(b, down))
 	{
-		if (ft_atoi(b[before_empty_case(b, down)]) == minimal_value(b, down))
+		if (ft_atoi(b[before_empty_case(b, down)]) == maximal_value(b, down))
 		{
 			push_a(a, b, down);
-			rotate_a(a, down);
 		}
-		else if (near_down(b, minimal_value(b, down), down))
+		else if (near_down(b, maximal_value(b, down), down))
 			reverse_rotate_b(b, down);
 		else
 		 	rotate_b(b, down);
@@ -244,18 +287,33 @@ void	main_algo(char **a, char **b, int down)
 
 // trie et push par quart
 	quarter += down / 4;
-	while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
+	if (near_top_tabs(a, sort, down, quarter) - near_down_tabs(a, sort, down, quarter) <= 0)
 	{
-		if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+		while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
 		{
-			push_b(a, b, down);
-			//compteur++;
+			if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+			{
+				push_b(a, b, down);
+				//compteur++;
+			}
+			// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
+			else
+				rotate_a(a, down);
 		}
-		// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
-		else if (near_top_tabs(a, sort, down) - near_down_tabs(a, sort, down) <= 0)
-			rotate_a(a, down);
-		else
-			reverse_rotate_a(a, down);
+	}
+	else
+	{
+		while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
+		{
+			if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
+			{
+				push_b(a, b, down);
+				//compteur++;
+			}
+			// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
+			else
+				reverse_rotate_a(a, down);
+		}
 	}
 	
 	while (!isempty(b, down))
