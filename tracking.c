@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tracking.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:06:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/25 22:00:10 by v3r              ###   ########.fr       */
+/*   Updated: 2021/12/26 15:53:39 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,21 @@ int near_down(char **tab, int maximal, int down)
 		mid_stack++;
 	}
 	return (0);	
+}
+
+int near_top(char **ctab, int maximal, int down)
+{
+	int mid_stack;
+	int top = before_empty_case(ctab, down);
+	down -= 2;
+	mid_stack = ( (down - top) / 2 );
+	while (top <= (down - mid_stack))
+	{
+		if(ft_atoi(ctab[top]) == maximal)
+			return (1);
+		top++;
+	}
+	return (-1);	
 }
 
 int near_top_tabs(char **ctab, int *itab, int down)

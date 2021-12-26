@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 17:35:13 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/25 22:03:06 by v3r              ###   ########.fr       */
+/*   Updated: 2021/12/26 15:30:29 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	first_empty_case(char **tab, int max);
 int	minimal_value(char **tab, int down);
 int	maximal_value(char **tab, int down);
 int near_down(char **tab, int minimal, int down);
+int near_top(char **ctab, int maximal, int down);
 int near_top_tabs(char **ctab, int *itab, int down);
 int near_down_tabs(char **ctab, int *itab, int down);
 
@@ -55,9 +56,13 @@ void	push_b(char **a, char **b, int max);
 // fonctions de rotate;
 void	rotate_a(char **tab, int max);
 void	rotate_b(char **tab, int max);
+void	rotate_a2(char **tab, int max);
+void	rotate_b2(char **tab, int max);
 void	rotate_rr(char **a, char **b, int max);
 void	reverse_rotate_a(char **tab, int max);
 void	reverse_rotate_b(char **tab, int max);
+void	reverse_rotate_a2(char **tab, int max);
+void	reverse_rotate_b2(char **tab, int max);
 void	reverse_rotate_rr(char **a, char **b, int max);
 
 //main

@@ -143,6 +143,7 @@ void	main_algo(char **a, char **b, int down)
 	int *sort;
 	int quarter;
 	int i;
+	int rest = (down - 2) % 4;
 	//int compteur;
 
 	if(swap_checker(a, down) == 0)
@@ -152,9 +153,9 @@ void	main_algo(char **a, char **b, int down)
 	}
 	sort = sort_tab(a, down);
 	quarter = 0;
-// trie et push par 
+// 11111111111111
 	i = 0;
-	while ()
+	while (there_is_quarter(sort, a, down, before_empty_case(a, down), quarter))
 	{
 		if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
 		{
@@ -163,7 +164,12 @@ void	main_algo(char **a, char **b, int down)
 		}
 		// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
 		else
-			rotate_a(a, down);
+		{
+			if (ft_atoi(b[before_empty_case(b, down)]) != maximal_value(b, down))
+				rotate_rr(a, b, down);
+			else
+				rotate_a(a, down);
+		}
 		i++;
 	}
 
@@ -173,13 +179,13 @@ void	main_algo(char **a, char **b, int down)
 		{
 			push_a(a, b, down);
 		}
-		else if (near_down(b, maximal_value(b, down), down))
-			reverse_rotate_b(b, down);
+		else if (near_top(b, maximal_value(b, down), down) >= 0)
+			rotate_b(b, down);
 		else
-		 	rotate_b(b, down);
+		 	reverse_rotate_b(b, down);
 	}
-
-	quarter += (down - 2) / 4;
+// 222222222222
+	quarter += ((down - 2) / 4) + 1;
 	i = 0;
 	while (i <= (down - 2))
 	{
@@ -190,7 +196,12 @@ void	main_algo(char **a, char **b, int down)
 		}
 		// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
 		else
-			rotate_a(a, down);
+		{
+			if (ft_atoi(b[before_empty_case(b, down)]) != maximal_value(b, down))
+				rotate_rr(a, b, down);
+			else
+				rotate_a(a, down);
+		}
 		i++;
 	}
 
@@ -200,15 +211,14 @@ void	main_algo(char **a, char **b, int down)
 		{
 			push_a(a, b, down);
 		}
-		else if (near_down(b, maximal_value(b, down), down))
-			reverse_rotate_b(b, down);
+		else if (near_top(b, maximal_value(b, down), down) >= 0)
+			rotate_b(b, down);
 		else
-		 	rotate_b(b, down);
+		 	reverse_rotate_b(b, down);
 	}
 
-
-
-	quarter += (down - 2) / 4;
+// 3333333333333333
+	quarter += ((down - 2) / 4) + 1;
 	i = 0;
 	while (i <= (down - 2))
 	{
@@ -219,7 +229,12 @@ void	main_algo(char **a, char **b, int down)
 		}
 		// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
 		else
-			rotate_a(a, down);
+		{
+			if (ft_atoi(b[before_empty_case(b, down)]) != maximal_value(b, down))
+				rotate_rr(a, b, down);
+			else
+				rotate_a(a, down);
+		}
 		i++;
 	}
 
@@ -229,21 +244,23 @@ void	main_algo(char **a, char **b, int down)
 		{
 			push_a(a, b, down);
 		}
-		else if (near_down(b, maximal_value(b, down), down))
-			reverse_rotate_b(b, down);
+		else if (near_top(b, maximal_value(b, down), down) >= 0)
+			rotate_b(b, down);
 		else
-		 	rotate_b(b, down);
+		 	reverse_rotate_b(b, down);
 	}
 
 
-
-	quarter += (down - 2) / 4;
+// 444444444444444444
+	quarter += ((down - 2) / 4) + rest;
 	i = 0;
-	while (i <= (down - 3) / 4)
+	while (ft_atoi(a[down - 2]) != maximal_value(a, down))
 	{
-		reverse_rotate_a(a, down);
+		if (ft_atoi(b[before_empty_case(b, down)]) != maximal_value(b, down))
+			reverse_rotate_rr(a, b, down);
+		else
+			reverse_rotate_a(a, down);
 		push_b(a, b, down);
-
 		i++;
 	}
 
@@ -253,10 +270,10 @@ void	main_algo(char **a, char **b, int down)
 		{
 			push_a(a, b, down);
 		}
-		else if (near_down(b, maximal_value(b, down), down))
-			reverse_rotate_b(b, down);
+		else if (near_top(b, maximal_value(b, down), down) >= 0)
+			rotate_b(b, down);
 		else
-		 	rotate_b(b, down);
+		 	reverse_rotate_b(b, down);
 	}
 }
 
