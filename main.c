@@ -154,7 +154,7 @@ void	main_algo(char **a, char **b, int down)
 	quarter = 0;
 // trie et push par 
 	i = 0;
-	while (i <= (down - 2))
+	while ()
 	{
 		if (is_in_quarter(sort, down, ft_atoi(a[before_empty_case(a, down)]), quarter))
 		{
@@ -209,7 +209,6 @@ void	main_algo(char **a, char **b, int down)
 
 
 	quarter += (down - 2) / 4;
-
 	i = 0;
 	while (i <= (down - 2))
 	{
