@@ -106,32 +106,32 @@ char	**init_stack_a(char **argv, int *ac)
 // 3 = Qu'il m'y a aucun doublon
 int	swap_checker(char **tab, int down)
 {
-	int	top;
+	int	vtop;
 	int	i;
 
-	top = 0;
+	vtop = 0;
 	down -= 2;
-	while (top <= down)
+	while (vtop <= down)
 	{
-		if (ft_atoi(tab[top]) > 2147483647 || ft_atoi(tab[top]) < -2147483648)
+		if (ft_atoi(tab[vtop]) > 2147483647 || ft_atoi(tab[vtop]) < -2147483648)
 			return (0);
 		i = 0;
-		if (tab[top][0] == '-')
+		if (tab[vtop][0] == '-')
 			i++;
-		while (tab[top][i])
+		while (tab[vtop][i])
 		{
-			if (tab[top][i] < '0' || tab[top][i] > '9')
+			if (tab[vtop][i] < '0' || tab[vtop][i] > '9')
 				return (0);
 			i++;
 		}
-		i = top + 1;
+		i = vtop + 1;
 		while (i <= down)
 		{
-			if (ft_atoi(tab[top]) == ft_atoi(tab[i]))
+			if (ft_atoi(tab[vtop]) == ft_atoi(tab[i]))
 				return (0);
 			i++;
 		}
-		top++;
+		vtop++;
 	}
 	return (1);
 }

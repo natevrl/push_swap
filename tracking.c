@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:06:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/26 15:53:39 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/29 14:22:51 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	first_empty_case(char **tab, int max)
 	return (0);
 }
 // renvoie l'emplacement du premier chiffre en dessous d'une case vide
-int	before_empty_case(char **tab, int down)
+int	top(char **tab, int down)
 {
 	// je decremente de 2 : 1 pour lindex, 1 car argc compte le a.out
 	down -= 2;
@@ -56,15 +56,15 @@ int	isfull(char **tab)
 int	minimal_value(char **tab, int down)
 {
 	int	minimal;
-	int	top;
+	int	vtop;
 
-	top = before_empty_case(tab, down);
-	minimal = ft_atoi(tab[top]);
-	while (top <= down - 2)
+	vtop = top(tab, down);
+	minimal = ft_atoi(tab[vtop]);
+	while (vtop <= down - 2)
 	{
-		if (ft_atoi(tab[top]) < minimal)
-			minimal = ft_atoi(tab[top]);
-		top++;
+		if (ft_atoi(tab[vtop]) < minimal)
+			minimal = ft_atoi(tab[vtop]);
+		vtop++;
 	}   
 	return (minimal);
 }
@@ -72,34 +72,34 @@ int	minimal_value(char **tab, int down)
 int	maximal_value(char **tab, int down)
 {
 	int	minimal;
-	int	top;
+	int	vtop;
 
-	top = before_empty_case(tab, down);
-	minimal = ft_atoi(tab[top]);
-	while (top <= down - 2)
+	vtop = top(tab, down);
+	minimal = ft_atoi(tab[vtop]);
+	while (vtop <= down - 2)
 	{
-		if (ft_atoi(tab[top]) > minimal)
-			minimal = ft_atoi(tab[top]);
-		top++;
+		if (ft_atoi(tab[vtop]) > minimal)
+			minimal = ft_atoi(tab[vtop]);
+		vtop++;
 	}   
 	return (minimal);
 }
 
 
-//un tier de la stack  = own - top) / 3) * 2
-// mid_stack + top = le haut de la stack + lajout des 2/3 = donc le bas de la stack
+//un tier de la stack  = own - vtop) / 3) * 2
+// mid_stack + vtop = le haut de la stack + lajout des 2/3 = donc le bas de la stack
 int near_down(char **tab, int maximal, int down)
 {
 	int mid_stack;
-	int top = before_empty_case(tab, down);
+	int vtop = top(tab, down);
 	down -= 2;
-	mid_stack = ((down - top) / 2);
+	mid_stack = ((down - vtop) / 2);
 	// printf("midstack = %d\n", mid_stack);
-	// printf("down = %d\n", down - top);
-	// printf("top = %d\n", top);
-	while (mid_stack + top <= down)
+	// printf("down = %d\n", down - vtop);
+	// printf("vtop = %d\n", vtop);
+	while (mid_stack + vtop <= down)
 	{
-		if(ft_atoi(tab[mid_stack + top]) == maximal)
+		if(ft_atoi(tab[mid_stack + vtop]) == maximal)
 			return (1);
 		mid_stack++;
 	}
@@ -109,36 +109,36 @@ int near_down(char **tab, int maximal, int down)
 int near_top(char **ctab, int maximal, int down)
 {
 	int mid_stack;
-	int top = before_empty_case(ctab, down);
+	int vtop = top(ctab, down);
 	down -= 2;
-	mid_stack = ( (down - top) / 2 );
-	while (top <= (down - mid_stack))
+	mid_stack = ( (down - vtop) / 2 );
+	while (vtop <= (down - mid_stack))
 	{
-		if(ft_atoi(ctab[top]) == maximal)
+		if(ft_atoi(ctab[vtop]) == maximal)
 			return (1);
-		top++;
+		vtop++;
 	}
 	return (-1);	
 }
 
-int near_top_tabs(char **ctab, int *itab, int down)
+int near_vtop_tabs(char **ctab, int *itab, int down)
 {
 	int mid_stack;
-	int top = before_empty_case(ctab, down);
+	int vtop = top(ctab, down);
 	int i;
 	int compteur = 1;
 	down -= 2;
-	mid_stack = ( (down - top) / 2);
-	while (top <= down - mid_stack)
+	mid_stack = ( (down - vtop) / 2);
+	while (vtop <= down - mid_stack)
 	{
 		i = 0;
 		while (i < down / 2 )
 		{
-			if(ft_atoi(ctab[top]) == itab[i])
+			if(ft_atoi(ctab[vtop]) == itab[i])
 				return (compteur);
 			i++;
 		}
-		top++;
+		vtop++;
 		compteur++;
 	}
 	return (-1);	
@@ -147,12 +147,12 @@ int near_top_tabs(char **ctab, int *itab, int down)
 int near_down_tabs(char **ctab, int *itab, int down)
 {
 	int mid_stack;
-	int top = before_empty_case(ctab, down);
+	int vtop = top(ctab, down);
 	int i;
 	int compteur = 1;
 	down -= 2;
-	mid_stack = ( (down - top) / 2);
-	while (down >= top + mid_stack)
+	mid_stack = ( (down - vtop) / 2);
+	while (down >= vtop + mid_stack)
 	{
 		i = 0;
 		while (i < down / 2 )
@@ -226,31 +226,31 @@ int	is_in_midtier(int *itab, int down, int number)
 	return (0);
 }
 
-int	there_is_midtier(int *itab, char **ctab, int down, int top)
+int	there_is_midtier(int *itab, char **ctab, int down, int vtop)
 {
 
 	int	y;
 
-	while (top <= down - 2)
+	while (vtop <= down - 2)
 	{
 		y = 0;
 		while (y < (down - 2) / 2)
 		{
-			if(ft_atoi(ctab[top]) == itab[y])
+			if(ft_atoi(ctab[vtop]) == itab[y])
 				return (1);
 			y++;
 		}
-		top++;
+		vtop++;
 	}
 	return (0);
 }
 
-int	is_in_quarter(int *itab, int down, int number, int quarter)
+int	is_in_parts(int *itab, int down, int number, int quarter, int parts)
 {
 	int	i;
 
 	i = 0;
-	while (i <= ( (down - 2) / 4 ) )
+	while (i <= ( (down - 2) / parts ) )
 	{
 		if(itab[quarter + i] == number)
 			return (1);
@@ -259,20 +259,20 @@ int	is_in_quarter(int *itab, int down, int number, int quarter)
 	return (0);
 }
 
-int	there_is_quarter(int *itab, char **ctab, int down, int top, int quarter)
+int	there_is_parts(int *itab, char **ctab, int down, int vtop, int quarter, int parts)
 {
 	int i;
 	down -= 2;
-	while (top <= down)
+	while (vtop <= down)
 	{
 		i = 0;
-		while (i <= down / 4)
+		while (i <= down / parts)
 		{
-			if(ft_atoi(ctab[top]) == itab[quarter + i])
+			if(ft_atoi(ctab[vtop]) == itab[quarter + i])
 				return (1);
 			i++;
 		}
-		top++;
+		vtop++;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 17:35:13 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/26 15:30:29 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/29 14:21:50 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	swap_checker(char **tab, int down);
 // Tracking : fonctions de tcheck et de recuperation d'index;
 int	isfull(char **tab);
 int	isempty(char **tab, int max);
-int	before_empty_case(char **tab, int max);
+int	top(char **tab, int max);
 int	first_empty_case(char **tab, int max);
 int	minimal_value(char **tab, int down);
 int	maximal_value(char **tab, int down);
@@ -36,10 +36,10 @@ int near_top(char **ctab, int maximal, int down);
 int near_top_tabs(char **ctab, int *itab, int down);
 int near_down_tabs(char **ctab, int *itab, int down);
 
-int	there_is_midtier(int *itab, char **ctab, int down, int top);
+int	there_is_midtier(int *itab, char **ctab, int down, int vtop);
 int	is_in_midtier(int *itab, int down, int number);
-int	is_in_quarter(int *itab, int down, int number, int quarter);
-int	there_is_quarter(int *itab, char **ctab, int down, int top, int quarter);
+int	there_is_parts(int *itab, char **ctab, int down, int vtop, int quarter, int parts);
+int	is_in_parts(int *itab, int down, int number, int quarter, int parts);
 int	*sort_tab(char **tab, int down);
 
 
@@ -68,5 +68,9 @@ void	reverse_rotate_rr(char **a, char **b, int max);
 //main
 void	big_stack_sorting(char **a, char **b, int down);
 void	three_numbers(char **a, int down);
+void	main_algo(char **a, char **b, int down, int parts);
+void	sort_quarter(char **a, char **b, int down);
+void	reverse_push_quarter(char **a, char **b, int down);
+void	push_quarter(char **a, char **b, int down, int quarter, int parts);
 
 #endif

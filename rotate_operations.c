@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 16:28:27 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/26 14:58:36 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/29 14:19:40 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	rotate_a(char **tab, int max)
 {
 	char	*temp;
-	int	top;
+	int	vtop;
 
 	if (isempty(tab, max))
 		return ;
-	top = before_empty_case(tab, max);
-	temp = tab[top];
+	vtop = top(tab, max);
+	temp = tab[vtop];
 	max -= 2;
-	while (top < max)
+	while (vtop < max)
 	{
-		tab[top] = tab[top + 1];
-		top++;
+		tab[vtop] = tab[vtop + 1];
+		vtop++;
 	}
 	tab[max] = temp;
 	ft_putstr_fd("ra\n", 1);
@@ -34,17 +34,17 @@ void	rotate_a(char **tab, int max)
 void	rotate_b(char **tab, int max)
 {
 	char	*temp;
-	int	top;
+	int	vtop;
 
 	if (isempty(tab, max))
 		return ;
-	top = before_empty_case(tab, max);
-	temp = tab[top];
+	vtop = top(tab, max);
+	temp = tab[vtop];
 	max -= 2;
-	while (top < max)
+	while (vtop < max)
 	{
-		tab[top] = tab[top + 1];
-		top++;
+		tab[vtop] = tab[vtop + 1];
+		vtop++;
 	}
 	tab[max] = temp;
 	ft_putstr_fd("rb\n", 1);
@@ -54,17 +54,17 @@ void	rotate_b(char **tab, int max)
 void	rotate_a2(char **tab, int max)
 {
 	char	*temp;
-	int	top;
+	int	vtop;
 
 	if (isempty(tab, max))
 		return ;
-	top = before_empty_case(tab, max);
-	temp = tab[top];
+	vtop = top(tab, max);
+	temp = tab[vtop];
 	max -= 2;
-	while (top < max)
+	while (vtop < max)
 	{
-		tab[top] = tab[top + 1];
-		top++;
+		tab[vtop] = tab[vtop + 1];
+		vtop++;
 	}
 	tab[max] = temp;
 }
@@ -72,17 +72,17 @@ void	rotate_a2(char **tab, int max)
 void	rotate_b2(char **tab, int max)
 {
 	char	*temp;
-	int	top;
+	int	vtop;
 
 	if (isempty(tab, max))
 		return ;
-	top = before_empty_case(tab, max);
-	temp = tab[top];
+	vtop = top(tab, max);
+	temp = tab[vtop];
 	max -= 2;
-	while (top < max)
+	while (vtop < max)
 	{
-		tab[top] = tab[top + 1];
-		top++;
+		tab[vtop] = tab[vtop + 1];
+		vtop++;
 	}
 	tab[max] = temp;
 
@@ -98,38 +98,38 @@ void	rotate_rr(char **a, char **b, int max)
 void	reverse_rotate_a(char **tab, int max)
 {
 	char	*temp;
-	int	top;
+	int	vtop;
 
 	if (isempty(tab, max))
 		return ;
-	top = before_empty_case(tab, max);
+	vtop = top(tab, max);
 	max -= 2;
 	temp = tab[max];
-	while (top < max)
+	while (vtop < max)
 	{
 		tab[max] = tab[max - 1];
 		max--;
 	}
-	tab[top] = temp;
+	tab[vtop] = temp;
 	ft_putstr_fd("rra\n", 1);
 }
 
 void	reverse_rotate_b(char **tab, int max)
 {
 	char	*temp;
-	int	top;
+	int	vtop;
 
 	if (isempty(tab, max))
 		return ;
-	top = before_empty_case(tab, max);
+	vtop = top(tab, max);
 	max -= 2;
 	temp = tab[max];
-	while (top < max)
+	while (vtop < max)
 	{
 		tab[max] = tab[max - 1];
 		max--;
 	}
-	tab[top] = temp;
+	tab[vtop] = temp;
 	ft_putstr_fd("rrb\n", 1);
 }
 
@@ -137,37 +137,37 @@ void	reverse_rotate_b(char **tab, int max)
 void	reverse_rotate_a2(char **tab, int max)
 {
 	char	*temp;
-	int	top;
+	int	vtop;
 
 	if (isempty(tab, max))
 		return ;
-	top = before_empty_case(tab, max);
+	vtop = top(tab, max);
 	max -= 2;
 	temp = tab[max];
-	while (top < max)
+	while (vtop < max)
 	{
 		tab[max] = tab[max - 1];
 		max--;
 	}
-	tab[top] = temp;
+	tab[vtop] = temp;
 }
 
 void	reverse_rotate_b2(char **tab, int max)
 {
 	char	*temp;
-	int	top;
+	int	vtop;
 
 	if (isempty(tab, max))
 		return ;
-	top = before_empty_case(tab, max);
+	vtop = top(tab, max);
 	max -= 2;
 	temp = tab[max];
-	while (top < max)
+	while (vtop < max)
 	{
 		tab[max] = tab[max - 1];
 		max--;
 	}
-	tab[top] = temp;
+	tab[vtop] = temp;
 }
 
 void	reverse_rotate_rr(char **a, char **b, int max)
