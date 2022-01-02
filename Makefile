@@ -1,37 +1,31 @@
-SRCS		= rotate_operations.c\
-			tracking.c\
-			initialisations.c\
-			main.c\
-			swap_n_push_operations.c\
+# willcard = prend tout les fichiers *.c (variable propre au Makefile)
+SRCS = $(wildcard *.c)
+# OBJS = variable SRC modifiee avec .o au lieu de .c comme extension
+OBJS = $(SRCS:.c=.o)
+LIBFT = libft/libft.a
 
-LIBS		= libft/libft.a
+CC = clang
+CFLAGS = -Wall -Werror -Wextra
+EXEC = push_swap
 
-OBJS		= ${SRCS:.c=.o}
+all : $(EXEC)
 
+# %.o : %.c = Toutes les cibles *.o seront creees avec les dependances *.c
+# raccourci = .c.o comme nom de regle
+.c.o :
+	$(CC) $(CFLAGS) -c $< -o $@
+	# Variante : ${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-NAME		= push_swap
+$(EXEC) : $(OBJS)
+	make -C libft
+	$(CC) $(CFLAGS) -o $(EXEC) $(OBJS) $(LIBFT)
 
-CC			= cc
+clean : 
+	rm -f $(OBJS)
+	make fclean -C libft
 
-RM			= rm -f
+fclean : clean
+	rm -f $(EXEC)
 
-CFLAGS 		= -Wall -Wextra -Werror
+re : fclean all
 
-all:		${NAME} 
-
-${LIBS}:
-		cd libft; make
-
-.c.o: 
-			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
-
-${NAME}:	${OBJS}
-			ar rc ${NAME} ${OBJS} 
-
-clean:	
-			${RM} ${OBJS} ${OBJSBONUS}
-
-fclean:		clean
-			${RM} ${NAME}
-
-re:			fclean all
