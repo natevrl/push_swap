@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:06:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/05 15:57:52 by nbenhado         ###   ########.fr       */
+/*   Updated: 2022/01/05 19:56:25 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,7 +219,7 @@ int is_sorted(char **a, int down)
 	i = 0;
 	while (i < down - 2)
 	{
-		if (ft_atoi(a[i] > a[i + 1])
+		if (ft_atoi(a[i]) > ft_atoi(a[i + 1]))
 			return (0);
 		i++;
 	}

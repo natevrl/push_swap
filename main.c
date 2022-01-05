@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:07:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/05 15:58:40 by nbenhado         ###   ########.fr       */
+/*   Updated: 2022/01/05 20:02:36 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,10 @@ void	main_algo(char **a, char **b, int down, int parts)
 {
 	int	quarter;
 	int	y;
-
-	y = 0;
+	int rest;
+	
+	rest = (down - 2) % parts;
+ 	y = 0;
 	quarter = 0;
 	while (y < parts)
 	{
@@ -118,7 +120,8 @@ void	main_algo(char **a, char **b, int down, int parts)
 		else
 			reverse_push_quarter(a, b, down);
 		sort_quarter(a, b, down);
-		quarter += ((down - 2) / parts) + 1;
+		if (y == parts - 1)
+			quarter += ((down - 2) / parts) + 1 + rest;
 		y++;
 	}
 }
@@ -172,6 +175,8 @@ void	main_algo(char **a, char **b, int down, int parts)
 	// printf("Maximal value : %d\n\n", maximal_value(a, ac));
 	if (ac < 5)
 		three_numbers(a, ac);
+	else if (ac < 10)
+		main_algo(a, b, ac, 1);
 	else if (ac < 200)
 		main_algo(a, b, ac, 4);
 	else
