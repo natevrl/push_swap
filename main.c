@@ -1,61 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 14:36:19 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/16 21:09:49y nbenhado         ###   ########.fr       */
+/*   Created: 2022/01/05 15:07:37 by nbenhado          #+#    #+#             */
+/*   Updated: 2022/01/05 15:58:40 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-// void	main_algo(char **a, char **b, int down)
-// {
-// 	int i;
-	
-// 	if(swap_checker(a, down) == 0)
-// 	{
-// 		ft_putstr_fd("Error\n", 2);
-// 		return ;
-// 	}
-// 	i = 0;
-// 	while (1)
-// 	{
-// 		if (ft_atoi(a[top(a, down)]) == minimal_value(a, down))
-// 		{
-// 			push_b(a, b, down);
-// 			i++;
-// 			if (isempty(a, down))
-// 				break ;
-// 		}
-// 		rotate_a(a, down);
-// 		i++;
-// 	}
-// 	while (!isempty(b, down))
-// 	{
-// 		push_a(a, b, down);
-// 		i++;
-// 	}
-// 	//printf("\nnombre doperations : %d\n\n", i);
-// }
-
 void	three_numbers(char **a, int down)
 {
-	if(swap_checker(a, down) == 0)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return ;
-	}
 	while (1)
 	{
-		if (ft_atoi(a[top(a, down)]) == minimal_value(a, down) 
-		|| ft_atoi(a[down - 2]) == maximal_value(a, down))
+		if (ft_atoi(a[top(a, down)]) == minimal_value(a, down)
+			|| ft_atoi(a[down - 2]) == maximal_value(a, down))
 		{
-			if (ft_atoi(a[down - 2]) == maximal_value(a, down) 
-			&& ft_atoi(a[top(a, down)]) == minimal_value(a, down))
+			if (ft_atoi(a[down - 2]) == maximal_value(a, down)
+				&& ft_atoi(a[top(a, down)]) == minimal_value(a, down))
 				return ;
 			else if (ft_atoi(a[top(a, down)]) == minimal_value(a, down))
 			{
@@ -72,60 +37,14 @@ void	three_numbers(char **a, int down)
 		else
 			rotate_a(a, down);
 	}
-
-	//printf("\nnombre doperations : %d\n\n", i);
 }
-
-// void	five_numbers(char **a, int down)
-// {
-
-// }
-
-// void	main_algo(char **a, char **b, int down)
-// {
-// 	int i;
-	
-// 	if(swap_checker(a, down) == 0)
-// 	{
-// 		ft_putstr_fd("Error\n", 2);
-// 		return ;
-// 	}
-// 	i = 0;
-// 	while (1)
-// 	{
-		
-// 		if (ft_atoi(a[top(a, down)]) == maximal_value(a, down))
-// 		{
-// 			push_b(a, b, down);
-// 			i++;
-// 			if (isempty(a, down))
-// 				break ;
-// 		}
-// 		if (!near_down(a, maximal_value(a, down), down))
-// 		 	rotate_a(a, down);
-// 		 else
-// 			reverse_rotate_a(a, down);
-// 		i++;
-// 	}
-// 	while (!isempty(b, down))
-// 	{
-// 		push_a(a, b, down);
-// 		i++;
-// 	}
-// 	//printf("\nnombre doperations : %d\n\n", i);
-// }
-
 
 void	big_stack_sorting(char **a, char **b, int down)
 {
-	if(swap_checker(a, down) == 0)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return ;
-	}
 	while (!isempty(a, down))
 	{
-		while (!isempty(b, down) && ft_atoi(b[top(b, down)]) > ft_atoi(a[top(a, down)]))
+		while (!isempty(b, down)
+			&& ft_atoi(b[top(b, down)]) > ft_atoi(a[top(a, down)]))
 		{
 			push_a(a, b, down);
 			swap_a(a, down);
@@ -134,25 +53,19 @@ void	big_stack_sorting(char **a, char **b, int down)
 	}
 	while (!isempty(b, down))
 		push_a(a, b, down);
-
-	//printf("\nnombre doperations : %d\n\n", i);
 }
 
 void	push_quarter(char **a, char **b, int down, int quarter, int parts)
 {
-	int i;
-	int *sort;
+	int	i;
+	int	*sort;
 
 	sort = sort_tab(a, down);
 	i = 0;
 	while (i <= (down - 2))
 	{
 		if (is_in_parts(sort, down, ft_atoi(a[top(a, down)]), quarter, parts))
-		{
 			push_b(a, b, down);
-			//compteur++;
-		}
-		// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
 		else
 		{
 			if (ft_atoi(b[top(b, down)]) != maximal_value(b, down))
@@ -163,6 +76,7 @@ void	push_quarter(char **a, char **b, int down, int quarter, int parts)
 		i++;
 	}
 }
+
 void	reverse_push_quarter(char **a, char **b, int down)
 {
 	while (ft_atoi(a[down - 2]) != maximal_value(a, down))
@@ -192,15 +106,10 @@ void	sort_quarter(char **a, char **b, int down)
 
 void	main_algo(char **a, char **b, int down, int parts)
 {
-	int quarter;
-	int y = 0;
-	//int rest = (down - 2) % 4;
+	int	quarter;
+	int	y;
 
-	if(swap_checker(a, down) == 0)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return ;
-	}
+	y = 0;
 	quarter = 0;
 	while (y < parts)
 	{
@@ -209,124 +118,10 @@ void	main_algo(char **a, char **b, int down, int parts)
 		else
 			reverse_push_quarter(a, b, down);
 		sort_quarter(a, b, down);
-
 		quarter += ((down - 2) / parts) + 1;
 		y++;
 	}
 }
-
-
-	// while (there_is_parts(sort, a, down, top(a, down), quarter))
-	// {
-	// 	if (is_in_parts(sort, down, ft_atoi(a[top(a, down)]), quarter))
-	// 	{
-	// 		push_b(a, b, down);
-	// 		//compteur++;
-	// 	}
-	// 	// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
-	// 	else
-	// 	{
-	// 		if (ft_atoi(b[top(b, down)]) != maximal_value(b, down))
-	// 			rotate_rr(a, b, down);
-	// 		else
-	// 			rotate_a(a, down);
-	// 	}
-	// 	i++;
-	// }
-
-// // 222222222222
-// 	quarter += ((down - 2) / 4) + 1;
-// 	i = 0;
-// 	while (i <= (down - 2))
-// 	{
-// 		if (is_in_parts(sort, down, ft_atoi(a[top(a, down)]), quarter))
-// 		{
-// 			push_b(a, b, down);
-// 			//compteur++;
-// 		}
-// 		// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
-// 		else
-// 		{
-// 			if (ft_atoi(b[top(b, down)]) != maximal_value(b, down))
-// 				rotate_rr(a, b, down);
-// 			else
-// 				rotate_a(a, down);
-// 		}
-// 		i++;
-// 	}
-
-// 	while (!isempty(b, down))
-// 	{
-// 		if (ft_atoi(b[top(b, down)]) == maximal_value(b, down))
-// 		{
-// 			push_a(a, b, down);
-// 		}
-// 		else if (near_top(b, maximal_value(b, down), down) >= 0)
-// 			rotate_b(b, down);
-// 		else
-// 		 	reverse_rotate_b(b, down);
-// 	}
-
-// // 3333333333333333
-// 	quarter += ((down - 2) / 4) + 1;
-// 	i = 0;
-// 	while (i <= (down - 2))
-// 	{
-// 		if (is_in_parts(sort, down, ft_atoi(a[top(a, down)]), quarter))
-// 		{
-// 			push_b(a, b, down);
-// 			//compteur++;
-// 		}
-// 		// reussir a savoir si une des valeurs du tab_sort est plus proche du haut ou de bas, a chaque coups
-// 		else
-// 		{
-// 			if (ft_atoi(b[top(b, down)]) != maximal_value(b, down))
-// 				rotate_rr(a, b, down);
-// 			else
-// 				rotate_a(a, down);
-// 		}
-// 		i++;
-// 	}
-
-// 	while (!isempty(b, down))
-// 	{
-// 		if (ft_atoi(b[top(b, down)]) == maximal_value(b, down))
-// 		{
-// 			push_a(a, b, down);
-// 		}
-// 		else if (near_top(b, maximal_value(b, down), down) >= 0)
-// 			rotate_b(b, down);
-// 		else
-// 		 	reverse_rotate_b(b, down);
-// 	}
-
-
-// // 444444444444444444
-// 	quarter += ((down - 2) / 4) + rest;
-// 	i = 0;
-// 	while (ft_atoi(a[down - 2]) != maximal_value(a, down))
-// 	{
-// 		if (ft_atoi(b[top(b, down)]) != maximal_value(b, down))
-// 			reverse_rotate_rr(a, b, down);
-// 		else
-// 			reverse_rotate_a(a, down);
-// 		push_b(a, b, down);
-// 		i++;
-// 	}
-
-// 	while (!isempty(b, down))
-// 	{
-// 		if (ft_atoi(b[top(b, down)]) == maximal_value(b, down))
-// 		{
-// 			push_a(a, b, down);
-// 		}
-// 		else if (near_top(b, maximal_value(b, down), down) >= 0)
-// 			rotate_b(b, down);
-// 		else
-// 		 	reverse_rotate_b(b, down);
-// 	}
-
-
 
  int main(int ac , char **av)
  {
@@ -338,11 +133,16 @@ void	main_algo(char **a, char **b, int down, int parts)
 
 	// ac = 6;
 	// char *tab[11] = {"a.out", "2", "3", "4", "1", "5"};
-
 	//printf("\nvaleur de AC : %d\n", ac);
 	a = init_stack_a(av, &ac);
 	b = init_stack_b(ac);
-
+	if (is_sorted(a, ac))
+	if (swap_checker(a, ac) == 0)
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (0);
+	}
+	
 	//  sort = sort_tab(a, ac);
 	// for (i = 0; i < 5; i++)
 	// 	printf(" tab[%d] = %d\n", i, sort[i]);
@@ -372,13 +172,11 @@ void	main_algo(char **a, char **b, int down, int parts)
 	// printf("Maximal value : %d\n\n", maximal_value(a, ac));
 	if (ac < 5)
 		three_numbers(a, ac);
-	// else if (ac == 5 || ac == 6)
 	else if (ac < 200)
 		main_algo(a, b, ac, 4);
 	else
 		main_algo(a, b, ac, 8);
 	//printf("near_down = %d\n", near_down(b, 2, ac));
-
 	//print_stack(a, b, ac);
  	return (0);
  }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 20:05:38 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/17 15:49:54by nbenhado         ###   ########.fr       */
+/*   Created: 2022/01/05 15:14:03 by nbenhado          #+#    #+#             */
+/*   Updated: 2022/01/05 15:52:34 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,31 @@ char	**init_stack_a(char **argv, int *ac)
 	return (tab_de_str);
 }
 
+long long       atoilong(char *nptr)
+{
+        int             i;
+        int             negatif;
+        int             result;
+
+        i = 0;
+        result = 0;
+        negatif = 1;
+        while ((nptr[i] >= 9 && nptr[i] <= 13) | (nptr[i] == ' '))
+                i++;
+        if (nptr[i] == '-' || nptr[i] == '+')
+        {
+                if (nptr[i] == '-')
+                        negatif = -1;
+                i++;
+        }
+        i -= 1;
+        while (nptr[++i] >= '0' && nptr[i] <= '9')
+                result = result * 10 + nptr[i] - '0';
+        result *= negatif;
+        return (result);
+}
+
+
 // Permet de check : 
 // 1 = aucun nombre depasse le max/min INT 
 // 2 = Tout les nombre sont bien des digit (- pour les negatif inclus)
@@ -113,7 +138,7 @@ int	swap_checker(char **tab, int down)
 	down -= 2;
 	while (vtop <= down)
 	{
-		if (ft_atoi(tab[vtop]) > 2147483647 || ft_atoi(tab[vtop]) < -2147483648)
+		if (atoilong(tab[vtop]) > 2147483647 || atoilong(tab[vtop]) < -2147483648)
 			return (0);
 		i = 0;
 		if (tab[vtop][0] == '-')

@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:06:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/29 14:22:51 by nbenhado         ###   ########.fr       */
+/*   Updated: 2022/01/05 15:57:52 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,21 @@ int	*sort_tab(char **tab, int down)
 	}		
 	return (tmp);
 }
+
+int is_sorted(char **a, int down)
+{
+	int i;
+
+	i = 0;
+	while (i < down - 2)
+	{
+		if (ft_atoi(a[i] > a[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 
 int	is_in_midtier(int *itab, int down, int number)
 {

@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 17:35:13 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/29 14:21:50 by nbenhado         ###   ########.fr       */
+/*   Updated: 2022/01/05 15:58:49 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	is_in_midtier(int *itab, int down, int number);
 int	there_is_parts(int *itab, char **ctab, int down, int vtop, int quarter, int parts);
 int	is_in_parts(int *itab, int down, int number, int quarter, int parts);
 int	*sort_tab(char **tab, int down);
+int is_sorted(char **a, int down);
 
 
 
