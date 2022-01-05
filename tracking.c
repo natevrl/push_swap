@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:06:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/05 19:56:25 by nbenhado         ###   ########.fr       */
+/*   Updated: 2022/01/05 23:15:19 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int	maximal_value(char **tab, int down)
 	}   
 	return (minimal);
 }
-
 
 //un tier de la stack  = own - vtop) / 3) * 2
 // mid_stack + vtop = le haut de la stack + lajout des 2/3 = donc le bas de la stack
@@ -182,15 +181,17 @@ int	*sort_tab(char **tab, int down)
 	int	taille_actuel;
 	int	i;
 	int y;
-	int t;
-	int	*tmp;
+	int tampon;
+	int	*tab_de_int;
 
 	taille_actuel = (down - 2);
-	tmp = (int	*)malloc(sizeof(int) * taille_actuel);
+	tab_de_int = (int	*)malloc(sizeof(int) * taille_actuel);
+	if (!tab_de_int)
+		return (NULL);
 	i = 0;
 	while (i <= taille_actuel)
 	{
-		tmp[i] = ft_atoi(tab[i]);
+		tab_de_int[i] = ft_atoi(tab[i]);
 		i++;
 	}
 	i = 0;
@@ -199,17 +200,17 @@ int	*sort_tab(char **tab, int down)
 		y = i + 1;
 		while (y <= taille_actuel)
 		{
-			if (tmp[i] < tmp[y])
+			if (tab_de_int[i] < tab_de_int[y])
 			{
-				t = tmp[i];
-				tmp[i] = tmp[y];
-				tmp[y] = t;
+				tampon = tab_de_int[i];
+				tab_de_int[i] = tab_de_int[y];
+				tab_de_int[y] = tampon;
 			}
 			y++;
 		}
 		i++;
 	}		
-	return (tmp);
+	return (tab_de_int);
 }
 
 int is_sorted(char **a, int down)
@@ -225,7 +226,6 @@ int is_sorted(char **a, int down)
 	}
 	return (1);
 }
-
 
 int	is_in_midtier(int *itab, int down, int number)
 {

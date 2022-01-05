@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:08:10 by nbenhado          #+#    #+#             */
-/*   Updated: 2021/12/29 14:20:16 by nbenhado         ###   ########.fr       */
+/*   Updated: 2022/01/06 00:11:31 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ void	push_b(char **a, char **b, int max)
 	if (isfull(a))
 	{
 		b[first_empty_case(b, max)] = a[0];
-		a[0] = ft_strdup("\0");
+		a[0] = "\0";
 	}
 	else
 	{
 		b[first_empty_case(b, max)] = a[top(a, max)];
-		a[first_empty_case(a, max) + 1] = ft_strdup("\0");
+		a[first_empty_case(a, max) + 1] = "\0";
 	}
 	ft_putstr_fd("pb\n", 1);
 }
@@ -86,12 +86,12 @@ void	push_a(char **a, char **b, int max)
 	if (isfull(b))
 	{
 		a[first_empty_case(a, max)] = b[0];
-		b[0] = ft_strdup("\0");
+		b[0] = "\0";
 	}
 	else
 	{
 		a[first_empty_case(a, max)] = b[top(b, max)];
-		b[first_empty_case(b, max) + 1] = ft_strdup("\0");
+		b[first_empty_case(b, max) + 1] = "\0";
 	}
 	ft_putstr_fd("pa\n", 1);
 }
