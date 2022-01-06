@@ -6,13 +6,13 @@
 /*   By: nbenhado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 16:09:16 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/05 15:49:05 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/12/07 21:43:50 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int		i;
 	int		negatif;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tracking.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:06:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/05 23:15:19 by nbenhado         ###   ########.fr       */
+/*   Updated: 2022/01/06 14:47:12 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ int	*sort_tab(char **tab, int down)
 	int tampon;
 	int	*tab_de_int;
 
-	taille_actuel = (down - 2);
+	taille_actuel = (down - 1);
 	tab_de_int = (int	*)malloc(sizeof(int) * taille_actuel);
 	if (!tab_de_int)
 		return (NULL);

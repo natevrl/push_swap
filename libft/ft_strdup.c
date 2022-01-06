@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nbenhado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 16:25:00 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/05 23:58:51 by nbenhado         ###   ########.fr       */
+/*   Updated: 2021/11/26 20:28:27 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 
 {
 	int		i;
@@ -32,6 +32,5 @@ char	*ft_strdup(char *src)
 		i++;
 	}
 	dest[i] = '\0';
-	free(src);
 	return (dest);
 }

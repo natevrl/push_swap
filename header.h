@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 17:35:13 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/05 15:58:49 by nbenhado         ###   ########.fr       */
+/*   Updated: 2022/01/06 13:29:47 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 // fonctions d'initialisation et d'affichage;
 char	**init_stack_a(char **argv, int *ac);
-char	**init_stack_b(int numb);
+char	**init_stack_b(int down);
 void	split_print_stack(char **a, char **b, int number, char **args);
 void	print_stack(char **a, char **b, int number);
 int	swap_checker(char **tab, int down);
@@ -72,6 +72,6 @@ void	three_numbers(char **a, int down);
 void	main_algo(char **a, char **b, int down, int parts);
 void	sort_quarter(char **a, char **b, int down);
 void	reverse_push_quarter(char **a, char **b, int down);
-void	push_quarter(char **a, char **b, int down, int quarter, int parts);
+void	push_quarter(char **a, char **b, int down, int parts);
 
 #endif

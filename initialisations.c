@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialisations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:14:03 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/05 22:55:51 by nbenhado         ###   ########.fr       */
+/*   Updated: 2022/01/06 14:14:16 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,19 @@ void	print_stack(char **a, char **b, int number)
 	printf("-----------------\n");
 }
 
-char	**init_stack_b(int numb)
+char	**init_stack_b(int down)
 {
-	char	**tab_de_str;
-	int		i;
+	// char **b;
+	// int i;
 
-	i = 0;
-	tab_de_str = malloc(sizeof(char **) * numb);
-	while (i + 1 < numb)
-	{
-		tab_de_str[i] = ft_strdup("\0");
-		i++;
-	}
-	tab_de_str[i] = ft_strdup("\0");
-	return (tab_de_str);
+	// b = malloc(sizeof(char *) * down);
+	// i = 0;
+	// while (i < down)
+	// {
+	// 	b[i] = "\0";
+	// 	i++;
+	// }
+	return (ft_calloc(sizeof(char *), down));
 }
 
 char	**init_stack_a(char **argv, int *ac)
