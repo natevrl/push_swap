@@ -4,7 +4,7 @@ SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 LIBFT = libft/libft.a
 
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 EXEC = push_swap
 
@@ -14,7 +14,6 @@ all : $(EXEC)
 # raccourci = .c.o comme nom de regle
 .c.o :
 	$(CC) $(CFLAGS) -c $< -o $@
-	# Variante : ${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 $(EXEC) : $(OBJS)
 	make -C libft
