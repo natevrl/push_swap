@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_n_push_operations.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:08:10 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/06 00:11:31 by nbenhado         ###   ########.fr       */
+/*   Updated: 2022/01/06 18:01:41 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,36 +62,36 @@ void	swap_ss(char **a, char **b, int max)
 }
 
 // prend le premier element de a (le plus haut) et le met dans b (le plus bas possible), ne fait rient sur a est vide
-void	push_b(char **a, char **b, int max)
+void	push_b(char **a, char **b, int max, char **ptr_zero)
 {
 	if (isempty(a, max))
 		return ;
 	if (isfull(a))
 	{
 		b[first_empty_case(b, max)] = a[0];
-		a[0] = "\0";
+		a[0] = *ptr_zero;
 	}
 	else
 	{
 		b[first_empty_case(b, max)] = a[top(a, max)];
-		a[first_empty_case(a, max) + 1] = "\0";
+		a[first_empty_case(a, max) + 1] = *ptr_zero;
 	}
 	ft_putstr_fd("pb\n", 1);
 }
 
-void	push_a(char **a, char **b, int max)
+void	push_a(char **a, char **b, int max, char **ptr_zero)
 {
 	if (isempty(b, max))
 		return ;
 	if (isfull(b))
 	{
 		a[first_empty_case(a, max)] = b[0];
-		b[0] = "\0";
+		b[0] = *ptr_zero;
 	}
 	else
 	{
 		a[first_empty_case(a, max)] = b[top(b, max)];
-		b[first_empty_case(b, max) + 1] = "\0";
+		b[first_empty_case(b, max) + 1] = *ptr_zero;
 	}
 	ft_putstr_fd("pa\n", 1);
 }

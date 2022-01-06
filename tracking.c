@@ -6,7 +6,7 @@
 /*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:06:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/06 14:47:12 by v3r              ###   ########.fr       */
+/*   Updated: 2022/01/06 18:36:30 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,16 +189,16 @@ int	*sort_tab(char **tab, int down)
 	if (!tab_de_int)
 		return (NULL);
 	i = 0;
-	while (i <= taille_actuel)
+	while (i < taille_actuel)
 	{
 		tab_de_int[i] = ft_atoi(tab[i]);
 		i++;
 	}
 	i = 0;
-	while (i <= taille_actuel)
+	while (i < taille_actuel)
 	{
 		y = i + 1;
-		while (y <= taille_actuel)
+		while (y < taille_actuel)
 		{
 			if (tab_de_int[i] < tab_de_int[y])
 			{
@@ -274,20 +274,20 @@ int	is_in_parts(int *itab, int down, int number, int quarter, int parts)
 	return (0);
 }
 
-int	there_is_parts(int *itab, char **ctab, int down, int vtop, int quarter, int parts)
-{
-	int i;
-	down -= 2;
-	while (vtop <= down)
-	{
-		i = 0;
-		while (i <= down / parts)
-		{
-			if(ft_atoi(ctab[vtop]) == itab[quarter + i])
-				return (1);
-			i++;
-		}
-		vtop++;
-	}
-	return (0);
-}
+// int	there_is_parts(int *itab, char **ctab, int down, int vtop, int quarter, int parts)
+// {
+// 	int i;
+// 	down -= 2;
+// 	while (vtop <= down)
+// 	{
+// 		i = 0;
+// 		while (i <= down / parts)
+// 		{
+// 			if(ft_atoi(ctab[vtop]) == itab[quarter + i])
+// 				return (1);
+// 			i++;
+// 		}
+// 		vtop++;
+// 	}
+// 	return (0);
+// }

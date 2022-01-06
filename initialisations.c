@@ -6,7 +6,7 @@
 /*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:14:03 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/06 14:14:16 by v3r              ###   ########.fr       */
+/*   Updated: 2022/01/06 17:42:58 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,20 @@ void	print_stack(char **a, char **b, int number)
 	printf("-----------------\n");
 }
 
-char	**init_stack_b(int down)
+char	**init_stack_b(int down, char **ptr_zero)
 {
-	// char **b;
-	// int i;
+	char **b;
+	int i;
 
-	// b = malloc(sizeof(char *) * down);
-	// i = 0;
-	// while (i < down)
-	// {
-	// 	b[i] = "\0";
-	// 	i++;
-	// }
-	return (ft_calloc(sizeof(char *), down));
+	b = malloc(sizeof(char *) * down);
+	i = 0;
+	while (i < down)
+	{
+		b[i] = *ptr_zero;
+		i++;
+	}
+	return (b);
+	// return (ft_calloc(sizeof(char *), down));
 }
 
 char	**init_stack_a(char **argv, int *ac)
