@@ -6,14 +6,14 @@
 /*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 20:31:58 by v3r               #+#    #+#             */
-/*   Updated: 2022/01/06 22:24:38 by v3r              ###   ########.fr       */
+/*   Updated: 2022/01/07 21:20:51 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
 //renvoi l'emplacement de la premiere case vide trouver (ou le premier si full)
-int	first_empty_case(char **tab, int max)
+int	first_empty(char **tab, int max)
 {
 	max -= 2;
 	while (max > 0)

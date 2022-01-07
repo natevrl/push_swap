@@ -6,7 +6,7 @@
 /*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 16:28:27 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/06 20:28:47 by v3r              ###   ########.fr       */
+/*   Updated: 2022/01/07 21:18:59 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	rotate_a(char **tab, int max)
 {
 	char	*temp;
-	int	vtop;
+	int		vtop;
 
 	if (isempty(tab, max))
 		return ;
@@ -34,7 +34,7 @@ void	rotate_a(char **tab, int max)
 void	rotate_b(char **tab, int max)
 {
 	char	*temp;
-	int	vtop;
+	int		vtop;
 
 	if (isempty(tab, max))
 		return ;
@@ -48,13 +48,12 @@ void	rotate_b(char **tab, int max)
 	}
 	tab[max] = temp;
 	ft_putstr_fd("rb\n", 1);
-
 }
 
 void	rotate_a2(char **tab, int max)
 {
 	char	*temp;
-	int	vtop;
+	int		vtop;
 
 	if (isempty(tab, max))
 		return ;
@@ -72,7 +71,7 @@ void	rotate_a2(char **tab, int max)
 void	rotate_b2(char **tab, int max)
 {
 	char	*temp;
-	int	vtop;
+	int		vtop;
 
 	if (isempty(tab, max))
 		return ;
@@ -85,7 +84,6 @@ void	rotate_b2(char **tab, int max)
 		vtop++;
 	}
 	tab[max] = temp;
-
 }
 
 void	rotate_rr(char **a, char **b, int max)
@@ -94,5 +92,3 @@ void	rotate_rr(char **a, char **b, int max)
 	rotate_b2(b, max);
 	ft_putstr_fd("rr\n", 1);
 }
-
-

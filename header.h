@@ -6,14 +6,13 @@
 /*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 17:35:13 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/06 23:36:18 by v3r              ###   ########.fr       */
+/*   Updated: 2022/01/07 21:20:51 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include "libft/libft.h"
 
@@ -28,7 +27,7 @@ int     swap_checker(char **tab, int bot);
 int	isfull(char **tab);
 int	isempty(char **tab, int max);
 int	top(char **tab, int max);
-int	first_empty_case(char **tab, int max);
+int	first_empty(char **tab, int max);
 int	min_v(char **tab, int bot);
 int	max_v(char **tab, int bot);
 int	near_top(char **ctab, int maximal, int bot);

@@ -12,21 +12,6 @@
 
 #include "header.h"
 
-// void	print_stack(char **a, char **b, int number)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < number - 1)
-// 	{
-// 		printf("%s	|    %s\n", a[i], b[i]);
-// 		i++;
-// 	}
-// 	printf(" -		-\n");
-// 	printf(" a		b\n");
-// 	printf("-----------------\n");
-// }
-
 char	**init_stack_b(int bot, char **ptr_zero)
 {
 	char	**b;

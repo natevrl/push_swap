@@ -6,7 +6,7 @@
 /*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 20:28:55 by v3r               #+#    #+#             */
-/*   Updated: 2022/01/06 20:29:06 by v3r              ###   ########.fr       */
+/*   Updated: 2022/01/07 21:19:30 by v3r              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	reverse_rotate_a2(char **tab, int max)
 {
 	char	*temp;
-	int	vtop;
+	int		vtop;
 
 	if (isempty(tab, max))
 		return ;
@@ -33,7 +33,7 @@ void	reverse_rotate_a2(char **tab, int max)
 void	reverse_rotate_b2(char **tab, int max)
 {
 	char	*temp;
-	int	vtop;
+	int		vtop;
 
 	if (isempty(tab, max))
 		return ;
@@ -58,7 +58,7 @@ void	reverse_rotate_rr(char **a, char **b, int max)
 void	reverse_rotate_a(char **tab, int max)
 {
 	char	*temp;
-	int	vtop;
+	int		vtop;
 
 	if (isempty(tab, max))
 		return ;
@@ -77,7 +77,7 @@ void	reverse_rotate_a(char **tab, int max)
 void	reverse_rotate_b(char **tab, int max)
 {
 	char	*temp;
-	int	vtop;
+	int		vtop;
 
 	if (isempty(tab, max))
 		return ;
