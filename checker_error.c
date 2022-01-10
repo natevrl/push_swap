@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_error.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 20:33:12 by v3r               #+#    #+#             */
-/*   Updated: 2022/01/06 22:26:07 by v3r              ###   ########.fr       */
+/*   Updated: 2022/01/10 20:39:09 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,20 @@ static long long	atl(char *nptr)
 	result = 0;
 	negatif = 1;
 	while ((nptr[i] >= 9 && nptr[i] <= 13) | (nptr[i] == ' '))
-			i++;
+		i++;
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{
 		if (nptr[i] == '-')
-				negatif = -1;
+			negatif = -1;
 		i++;
 	}
 	i -= 1;
 	while (nptr[++i] >= '0' && nptr[i] <= '9')
-			result = result * 10 + nptr[i] - '0';
+		result = result * 10 + nptr[i] - '0';
 	result *= negatif;
 	return (result);
 }
 
-// Permet de check : 
-// 1 = aucun nombre depasse le max/min INT 
-// 2 = Tout les nombre sont bien des digit (- pour les negatif inclus)
-// 3 = Qu'il m'y a aucun doublon
 int	swap_checker(char **tab, int bot)
 {
 	int	vtop;

@@ -1,6 +1,4 @@
-# willcard = prend tout les fichiers *.c (variable propre au Makefile)
 SRCS = $(wildcard *.c)
-# OBJS = variable SRC modifiee avec .o au lieu de .c comme extension
 OBJS = $(SRCS:.c=.o)
 LIBFT = libft/libft.a
 
@@ -10,8 +8,6 @@ EXEC = push_swap
 
 all : $(EXEC)
 
-# %.o : %.c = Toutes les cibles *.o seront creees avec les dependances *.c
-# raccourci = .c.o comme nom de regle
 .c.o :
 	$(CC) $(CFLAGS) -c $< -o $@
 
