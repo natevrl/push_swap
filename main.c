@@ -6,7 +6,7 @@
 /*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:07:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/06 23:35:25 by v3r              ###   ########.fr       */
+/*   Updated: 2022/01/10 22:43:43 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	main(int ac, char **av)
 	{
 		if (!swap_checker(a, ac))
 			ft_putstr_fd("Error\n", 2);
-		return (0);
+		return (free_and_return(ptr_zero, b, a, ac));
 	}
 	if (ac < 5)
 		three_numbers(a, ac);
