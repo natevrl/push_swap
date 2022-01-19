@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialisations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:14:03 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/06 22:28:15 by v3r              ###   ########.fr       */
+/*   Updated: 2022/01/19 19:25:16 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	**init_stack_b(int bot, char **ptr_zero)
 	int		i;
 
 	b = malloc(sizeof(char *) * bot);
+	if (b == NULL)
+		return (NULL);
 	i = 0;
 	while (i < bot)
 	{
@@ -43,13 +45,14 @@ char	**init_stack_a(char **argv, int *ac)
 		return (tab_de_str);
 	}
 	tab_de_str = malloc(sizeof(char **) * *ac);
-	y = 1;
+	if (tab_de_str == NULL)
+		return (NULL);
+	y = 0;
 	i = 0;
-	while (y < *ac)
+	while (++y < *ac)
 	{
 		tab_de_str[i] = ft_strdup(argv[y]);
 		i++;
-		y++;
 	}
 	tab_de_str[i] = ft_strdup("\0");
 	return (tab_de_str);

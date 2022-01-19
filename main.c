@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: v3r <v3r@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:07:37 by nbenhado          #+#    #+#             */
-/*   Updated: 2022/01/10 22:43:43 by nbenhado         ###   ########.fr       */
+/*   Updated: 2022/01/19 19:15:21 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,17 @@ static int	free_and_return(char *ptr_zero, char **b, char **a, int bot)
 
 	i = 0;
 	free(ptr_zero);
-	while (i < bot)
+	if (a)
 	{
-		free(a[i]);
-		i++;
+		while (i < bot)
+		{
+			free(a[i]);
+			i++;
+		}
+		free(a);
 	}
-	free(a);
-	free(b);
+	if (b)
+		free(b);
 	return (0);
 }
 
@@ -105,9 +109,13 @@ int	main(int ac, char **av)
 	char	*ptr_zero;
 
 	ptr_zero = malloc(sizeof(char));
+	if (!ptr_zero)
+		return (1);
 	ptr_zero[0] = '\0';
 	a = init_stack_a(av, &ac);
 	b = init_stack_b(ac, &ptr_zero);
+	if (!a || !b)
+		return (free_and_return(ptr_zero, a, b, ac));
 	if (!swap_checker(a, ac) || is_sorted(a, ac))
 	{
 		if (!swap_checker(a, ac))
