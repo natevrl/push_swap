@@ -6,7 +6,7 @@
 /*   By: nbenhado <nbenhado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 20:33:12 by v3r               #+#    #+#             */
-/*   Updated: 2022/01/10 20:39:09 by nbenhado         ###   ########.fr       */
+/*   Updated: 2022/01/29 19:29:16 by nbenhado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	swap_checker(char **tab, int bot)
 	bot -= 2;
 	while (vtop <= bot)
 	{
-		if (atl(tab[vtop]) > 2147483647 || atl(tab[vtop]) < -2147483648)
+		if (atl(tab[vtop]) > 2147483647 || atl(tab[vtop]) < -2147483648 || ft_strlen(tab[vtop]) > 12)
 			return (0);
 		i = 0;
 		if (tab[vtop][0] == '-')
